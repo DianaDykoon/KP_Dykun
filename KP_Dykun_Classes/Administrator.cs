@@ -25,8 +25,8 @@ namespace KP_Dykun_Classes
 
         public Administrator(string login, string password)
         {
-            _login = login;
-            _password = password;
+            Login = login;
+            Password = password;
         }
 
         public override bool Authorization(string login, string password, List<User> users)
@@ -53,7 +53,7 @@ namespace KP_Dykun_Classes
             return false;
         }
 
-        public bool DeleteTrip(int tripNumber, DateTime date, List<Trip> trips)
+        public bool DeleteTrip(int tripNumber, DateTime date, ref List<Trip> trips)
         {
             var trip = trips.Where(p => p.Number == tripNumber).FirstOrDefault();
             if (trip is null)
