@@ -55,7 +55,7 @@ namespace KP_Dykun_Classes
             set { throw new NotImplementedException(); }
         }
 
-        public Trip(DateTime date, string pointOfDeparture, string destination, string numberOfSeats, Driver driver)
+        public Trip(DateTime date, string pointOfDeparture, string destination, short numberOfSeats, Driver driver)
         {
             throw new NotImplementedException();
         }
