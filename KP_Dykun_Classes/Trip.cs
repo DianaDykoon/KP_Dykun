@@ -21,48 +21,55 @@ namespace KP_Dykun_Classes
 
         public int Number
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _number; }
+            set { _number = value; }
         }
 
         public DateTime Date
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _date; }
+            set { _date = value; }
         }
 
         public string PointOfDeparture
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _pointOfDeparture; }
+            set { _pointOfDeparture = value; }
         }
 
         public string Destination
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _destination; }
+            set { _destination = value; }
         }
 
         public short NumberOfSeats
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _NumberOfSeats; }
+            set { _NumberOfSeats = value; }
         }
 
         public Driver Driver
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _driver; }
+            set { _driver = value; }
         }
 
         public Trip(DateTime date, string pointOfDeparture, string destination, short numberOfSeats, Driver driver)
         {
-            throw new NotImplementedException();
+            Date = date;
+            PointOfDeparture = pointOfDeparture;
+            Destination = destination;
+            NumberOfSeats = numberOfSeats;
+            Driver = driver;
+            companions = new List<Companion>();
+            Number = currentNumber++;
         }
 
         public string TripInfo()
         {
-            throw new NotImplementedException();
+            return $"{Driver.Name}, {Date.Day}.{Date.Month}.{Date.Year}, {PointOfDeparture}, " +
+                $"{Destination}, {NumberOfSeats}";
         }
     }
 
