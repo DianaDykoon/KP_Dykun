@@ -1,4 +1,5 @@
 ﻿using KP_Dykun_Classes;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,10 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,19 +24,32 @@ namespace KP_Dykun_UIClasses
         Driver driverAuthoriz = new Driver();
         Administrator administratorAuthoriz = new Administrator();
 
-        List<User> users = new ();
-        Companion companion = new Companion("Diana", "12345678", "+38(099)-9811127", "Diana");
-        Driver driver = new Driver("Diana", "7778654", "+38(097)-0124570", "Diana");
-        Administrator administrator = new Administrator("Admin07", "admin@_109");
+        List<User>? users = new ();
+        List<Administrator>? administrators = new();
+        List<Driver>? drivers = new ();
+        List<Companion>? companions = new();
 
         public AuthorizationForm()
         {
             InitializeComponent();
-            users.Add(companion);
-            users.Add(administrator);
-            users.Add(driver);
+            drivers = ReadDriversFromFileJson("drivers.json");
+            companions = ReadCompanionsFromFileJson("companions.json");
+            administrators = ReadAdministratorsFromFileJson("administrators.json");
+
+            foreach (var driver in drivers!)
+                users.Add(driver);
+
+            foreach (var companion in companions!)
+                users.Add(companion);
+
+            foreach (var administrator in administrators!)
+                users.Add(administrator);
         }
 
+
+        // new Companion("Diana", "12345678", "+38(099)-9811127", "Diana");
+        // new Driver("Diana", "7778654", "+38(097)-0124570", "Diana");
+        // new Administrator("Admin07", "admin@_109");
         private void btnLogin_Click(object sender, EventArgs e)
         {
             login = txtLogin.Text;
@@ -73,8 +90,61 @@ namespace KP_Dykun_UIClasses
 
         private void linkLblRegistration_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            
             Form form = new RegistrationForm();
             form.ShowDialog();
+        }
+
+        static List<Driver>? ReadDriversFromFileJson(string path)
+        {
+            List<Driver>? drivers = null;
+            try
+            {
+                drivers = JsonSerializer.Deserialize<List<Driver>>(File.ReadAllText(path));
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Помилка при читаннi з JSON файлу: {ex.Message}", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return drivers;
+        }
+        static List<Companion>? ReadCompanionsFromFileJson(string path)
+        {
+            List<Companion>? companions = null;
+            try
+            {
+                companions = JsonSerializer.Deserialize<List<Companion>>(File.ReadAllText(path));
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Помилка при читаннi з JSON файлу: {ex.Message}", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return companions;
+        }
+        static List<Administrator>? ReadAdministratorsFromFileJson(string path)
+        {
+            List<Administrator>? administrators = null;
+            try
+            {
+                administrators = JsonSerializer.Deserialize<List<Administrator>>(File.ReadAllText(path));
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Помилка при читаннi з JSON файлу: {ex.Message}", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return administrators;
         }
     }
 }

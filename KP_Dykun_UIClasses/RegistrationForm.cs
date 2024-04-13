@@ -8,6 +8,8 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,25 +22,58 @@ namespace KP_Dykun_UIClasses
         string name = "";
         string phoneNumber = "";
         string role = "";
-        List<User>? users = new List<User>();
+        List<Administrator>? administrators = new();
+        List<Driver>? drivers = new();
+        List<Companion>? companions = new();
+
 
         public RegistrationForm()
         {
             InitializeComponent();
-            users = ReadUsersFromFileJson("users.json");
+            drivers = ReadDriversFromFileJson("drivers.json");
+            companions = ReadCompanionsFromFileJson("companions.json");
+            administrators = ReadAdministratorsFromFileJson("administrators.json");
         }
 
         private void btnRegistration_Click(object sender, EventArgs e)
         {
-
+            
         }
 
-        static List<User>? ReadUsersFromFileJson(string path)
+        static void SaveDriversToFileJson(List<Driver> drivers, string path)
         {
-            List<User>? users = null;
             try
             {
-                users = JsonSerializer.Deserialize<List<User>>(File.ReadAllText(path));
+                string jsonstring = "";
+                jsonstring = JsonSerializer.Serialize(drivers);
+                File.WriteAllText(path, jsonstring);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        static void SaveCompanionsToFileJson(List<Companion> companions, string path)
+        {
+            try
+            {
+                string jsonstring = "";
+                jsonstring = JsonSerializer.Serialize(companions);
+                File.WriteAllText(path, jsonstring);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        static List<Driver>? ReadDriversFromFileJson(string path)
+        {
+            List<Driver>? drivers = null;
+            try
+            {
+                drivers = JsonSerializer.Deserialize<List<Driver>>(File.ReadAllText(path));
             }
             catch (IOException ex)
             {
@@ -48,7 +83,41 @@ namespace KP_Dykun_UIClasses
             {
                 MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return users;
+            return drivers;
+        }
+        static List<Companion>? ReadCompanionsFromFileJson(string path)
+        {
+            List<Companion>? companions = null;
+            try
+            {
+                companions = JsonSerializer.Deserialize<List<Companion>>(File.ReadAllText(path));
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Помилка при читаннi з JSON файлу: {ex.Message}", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return companions;
+        }
+        static List<Administrator>? ReadAdministratorsFromFileJson(string path)
+        {
+            List<Administrator>? administrators = null;
+            try
+            {
+                administrators = JsonSerializer.Deserialize<List<Administrator>>(File.ReadAllText(path));
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Помилка при читаннi з JSON файлу: {ex.Message}", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return administrators;
         }
     }
 }
