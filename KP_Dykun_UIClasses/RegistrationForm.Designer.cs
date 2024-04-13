@@ -80,6 +80,7 @@
             btnRegistration.TabIndex = 9;
             btnRegistration.Text = "Зареєструватися";
             btnRegistration.UseVisualStyleBackColor = false;
+            btnRegistration.Click += btnRegistration_Click;
             // 
             // lblPassword
             // 

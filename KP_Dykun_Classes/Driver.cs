@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace KP_Dykun_Classes
             set => _password = value;
         }
 
+        [JsonPropertyName("Phone number")]
         public string PhoneNumber
         {
             get => _phoneNumber;
