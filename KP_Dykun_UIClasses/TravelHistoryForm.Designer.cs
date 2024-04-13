@@ -74,7 +74,8 @@
             Controls.Add(lblTripHistory);
             Controls.Add(listTripHistory);
             Name = "TravelHistoryForm";
-            Text = "HistoryForm";
+            Text = "TravelHistory";
+            Load += TravelHistoryForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

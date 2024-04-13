@@ -16,5 +16,10 @@ namespace KP_Dykun_UIClasses
         {
             InitializeComponent();
         }
+
+        private void TravelHistoryForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

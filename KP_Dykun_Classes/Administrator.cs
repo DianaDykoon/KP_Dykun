@@ -28,6 +28,7 @@ namespace KP_Dykun_Classes
             Login = login;
             Password = password;
         }
+        public Administrator() { }
 
         public override bool Authorization(string login, string password, List<User> users)
         {
@@ -37,7 +38,7 @@ namespace KP_Dykun_Classes
                 return false;
             }
             var k = users.Where(s => s.Login == login && s.Password == password).ToList();
-            if (k.Count == 0)
+            if (k.Count == 0 || k[0] is not Administrator)
                 return false;
             return true;
         }

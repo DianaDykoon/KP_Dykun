@@ -53,6 +53,8 @@ namespace KP_Dykun_Classes
             Name = name;
         }
 
+        public Driver() { }
+
         public override bool Authorization(string login, string password, List<User> users)
         {
             var p = users.Where(s => s.Login == login).ToList();
@@ -61,7 +63,7 @@ namespace KP_Dykun_Classes
                 return false;
             }
             var k = users.Where(s => s.Login == login && s.Password == password).ToList();
-            if (k.Count == 0)
+            if (k.Count == 0 || k[0] is not Driver)
                 return false;
             return true;
         }

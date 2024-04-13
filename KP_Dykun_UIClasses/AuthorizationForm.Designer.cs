@@ -71,6 +71,7 @@
             btnLogin.TabIndex = 2;
             btnLogin.Text = "Увійти";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // txtLogin
             // 
@@ -107,6 +108,7 @@
             linkLblRegistration.TabIndex = 6;
             linkLblRegistration.TabStop = true;
             linkLblRegistration.Text = "Зареєструватися";
+            linkLblRegistration.LinkClicked += linkLblRegistration_LinkClicked;
             // 
             // AuthorizationForm
             // 

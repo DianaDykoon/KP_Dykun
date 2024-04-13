@@ -158,7 +158,7 @@
             Controls.Add(btnViewTripHistory);
             Controls.Add(btnReturnToMainForm);
             Name = "UserProfileForm";
-            Text = "ProfileForm";
+            Text = "Profile";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pctPhoto).EndInit();

@@ -51,8 +51,9 @@ namespace KP_Dykun_Classes
             _password = password;
             _phoneNumber = phoneNumber;
             _name = name;
-
         }
+
+        public Companion() { }
 
         public override bool Authorization(string login, string password, List<User> users)
         {
@@ -62,7 +63,7 @@ namespace KP_Dykun_Classes
                 return false;
             }
             var k = users.Where(s => s.Login == login && s.Password == password).ToList();
-            if (k.Count == 0)
+            if (k.Count == 0 || k[0] is not Companion)
                 return false;
             return true;
         }
