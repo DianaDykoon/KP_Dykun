@@ -25,7 +25,10 @@ namespace KP_Dykun_UIClasses
         List<Administrator>? administrators = new();
         List<Driver>? drivers = new();
         List<Companion>? companions = new();
+        List<User> users = new();
 
+        Companion companionRegistration = new Companion();
+        Driver driverRegistration = new Driver();
 
         public RegistrationForm()
         {
@@ -33,11 +36,77 @@ namespace KP_Dykun_UIClasses
             drivers = ReadDriversFromFileJson("drivers.json");
             companions = ReadCompanionsFromFileJson("companions.json");
             administrators = ReadAdministratorsFromFileJson("administrators.json");
+
+            foreach (var driver in drivers!)
+                users.Add(driver);
+
+            foreach (var companion in companions!)
+                users.Add(companion);
+
+            foreach (var administrator in administrators!)
+                users.Add(administrator);
         }
 
         private void btnRegistration_Click(object sender, EventArgs e)
         {
-            
+            login = txtLogin.Text;
+            password = txtPassword.Text;
+            name = txtName.Text;
+            phoneNumber = txtPhoneNumber.Text;
+            role = cmbRole.Text;
+
+            companionRegistration.Name = name;
+            companionRegistration.Login = login;
+            companionRegistration.Password = password;
+            companionRegistration.PhoneNumber = phoneNumber;
+
+            driverRegistration.Name = name;
+            driverRegistration.Login = login;
+            driverRegistration.Password = password;
+            driverRegistration.PhoneNumber = phoneNumber;
+
+            switch (role)
+            {
+                case "Попутник":
+                    var companion = users.Where(p => p.Login == login).ToList();
+                    if (companion.Count != 0)
+                    {
+                        MessageBox.Show("Цей логін вже зайнято", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    }
+                    if (companionRegistration.Registration(login, password, name, phoneNumber))
+                    {
+                        companions.Add(companionRegistration);
+                        SaveCompanionsToFileJson(companions, "companions.json");
+                        Form form = new CompanionMainForm();
+                        form.ShowDialog();
+                    }
+                    else 
+                        MessageBox.Show("Дані введено в неправильному форматі", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+                case "Водій":
+                    var driver = users.Where(p => p.Login == login).ToList();
+                    if (driver.Count != 0)
+                    {
+                        MessageBox.Show("Цей логін вже зайнято", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    }
+                    if (driverRegistration.Registration(login, password, name, phoneNumber))
+                    {
+                        drivers.Add(driverRegistration);
+                        SaveDriversToFileJson(drivers, "drivers.json");
+                        Form form = new CompanionMainForm();
+                        form.ShowDialog();
+                    }
+                    else
+                        MessageBox.Show("Дані введено в неправильному форматі", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+                default:
+                    MessageBox.Show("Оберіть роль із запропонованих", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
         }
 
         static void SaveDriversToFileJson(List<Driver> drivers, string path)
@@ -102,6 +171,7 @@ namespace KP_Dykun_UIClasses
             }
             return companions;
         }
+
         static List<Administrator>? ReadAdministratorsFromFileJson(string path)
         {
             List<Administrator>? administrators = null;

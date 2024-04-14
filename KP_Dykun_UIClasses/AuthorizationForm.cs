@@ -48,7 +48,7 @@ namespace KP_Dykun_UIClasses
 
 
         // new Companion("Diana", "12345678", "+38(099)-9811127", "Diana");
-        // new Driver("Diana", "7778654", "+38(097)-0124570", "Diana");
+        // new Driver("Alex07", "7778654", "+38(097)-0124570", "Alex");
         // new Administrator("Admin07", "admin@_109");
         private void btnLogin_Click(object sender, EventArgs e)
         {
