@@ -96,7 +96,7 @@ namespace KP_Dykun_UIClasses
                     {
                         drivers.Add(driverRegistration);
                         SaveDriversToFileJson(drivers, "drivers.json");
-                        Form form = new CompanionMainForm();
+                        Form form = new DriverMainForm();
                         form.ShowDialog();
                     }
                     else
