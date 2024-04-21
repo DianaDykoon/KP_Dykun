@@ -78,11 +78,33 @@ namespace KP_Dykun_UIClasses
                     {
                         companions.Add(companionRegistration);
                         SaveCompanionsToFileJson(companions, "companions.json");
+
+                        try
+                        {
+                            string jsonstring = "";
+                            jsonstring = JsonSerializer.Serialize(companionRegistration);
+                            File.WriteAllText("User.json", jsonstring);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         Form form = new CompanionMainForm();
                         form.ShowDialog();
                     }
-                    else 
-                        MessageBox.Show("Дані введено в неправильному форматі", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        if (login.Length < 3)
+                            MessageBox.Show("Логін повинен бути більше 3-х символів", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else if (password.Length < 6)
+                            MessageBox.Show("Пароль повинен бути більше 6-ти символів", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else if (string.IsNullOrEmpty(name))
+                            MessageBox.Show("Введіть ім'я", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Введіть телефон у форматі +38(XXX)-XXXXXXX", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                        
                     break;
 
                 case "Водій":
@@ -96,11 +118,32 @@ namespace KP_Dykun_UIClasses
                     {
                         drivers.Add(driverRegistration);
                         SaveDriversToFileJson(drivers, "drivers.json");
+
+                        try
+                        {
+                            string jsonstring = "";
+                            jsonstring = JsonSerializer.Serialize(driverRegistration);
+                            File.WriteAllText("User.json", jsonstring);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         Form form = new DriverMainForm();
                         form.ShowDialog();
                     }
                     else
-                        MessageBox.Show("Дані введено в неправильному форматі", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        if (login.Length < 3)
+                            MessageBox.Show("Логін повинен бути більше 3-х символів", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else if (password.Length < 6)
+                            MessageBox.Show("Пароль повинен бути більше 6-ти символів", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else if (string.IsNullOrEmpty(name))
+                            MessageBox.Show("Введіть ім'я", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Введіть телефон у форматі +38(XXX)-XXXXXXX", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     break;
 
                 default:

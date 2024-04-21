@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblSeats = new Label();
+            nmrcUpDownSeats = new NumericUpDown();
             btnCreateTrip = new Button();
-            txtSeatsAvailable = new TextBox();
             dtTimePickerTripDate = new DateTimePicker();
             txtDestination = new TextBox();
             txtDeparture = new TextBox();
@@ -39,48 +40,62 @@
             btnViewProfile = new Button();
             btnExit = new Button();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nmrcUpDownSeats).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonShadow;
+            panel1.Controls.Add(lblSeats);
+            panel1.Controls.Add(nmrcUpDownSeats);
             panel1.Controls.Add(btnCreateTrip);
-            panel1.Controls.Add(txtSeatsAvailable);
             panel1.Controls.Add(dtTimePickerTripDate);
             panel1.Controls.Add(txtDestination);
             panel1.Controls.Add(txtDeparture);
-            panel1.Location = new Point(27, 219);
+            panel1.Location = new Point(94, 187);
             panel1.Name = "panel1";
-            panel1.Size = new Size(288, 316);
+            panel1.Size = new Size(288, 348);
             panel1.TabIndex = 0;
+            // 
+            // lblSeats
+            // 
+            lblSeats.AutoSize = true;
+            lblSeats.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            lblSeats.Location = new Point(19, 179);
+            lblSeats.Name = "lblSeats";
+            lblSeats.Size = new Size(140, 25);
+            lblSeats.TabIndex = 8;
+            lblSeats.Text = "Кількість місць";
+            // 
+            // nmrcUpDownSeats
+            // 
+            nmrcUpDownSeats.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            nmrcUpDownSeats.Location = new Point(19, 210);
+            nmrcUpDownSeats.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nmrcUpDownSeats.Name = "nmrcUpDownSeats";
+            nmrcUpDownSeats.Size = new Size(150, 31);
+            nmrcUpDownSeats.TabIndex = 9;
+            nmrcUpDownSeats.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnCreateTrip
             // 
             btnCreateTrip.BackColor = SystemColors.GradientActiveCaption;
             btnCreateTrip.Cursor = Cursors.Hand;
             btnCreateTrip.FlatStyle = FlatStyle.Popup;
-            btnCreateTrip.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            btnCreateTrip.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             btnCreateTrip.ForeColor = SystemColors.ButtonHighlight;
-            btnCreateTrip.Location = new Point(19, 246);
+            btnCreateTrip.Location = new Point(19, 274);
             btnCreateTrip.Name = "btnCreateTrip";
             btnCreateTrip.Size = new Size(224, 52);
             btnCreateTrip.TabIndex = 6;
             btnCreateTrip.Text = "Опубліковати";
             btnCreateTrip.UseVisualStyleBackColor = false;
-            // 
-            // txtSeatsAvailable
-            // 
-            txtSeatsAvailable.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            txtSeatsAvailable.Location = new Point(19, 188);
-            txtSeatsAvailable.Name = "txtSeatsAvailable";
-            txtSeatsAvailable.Size = new Size(125, 31);
-            txtSeatsAvailable.TabIndex = 5;
-            txtSeatsAvailable.Text = "1 пасажир";
+            btnCreateTrip.Click += btnCreateTrip_Click;
             // 
             // dtTimePickerTripDate
             // 
             dtTimePickerTripDate.CalendarFont = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            dtTimePickerTripDate.Location = new Point(19, 143);
+            dtTimePickerTripDate.Location = new Point(19, 122);
             dtTimePickerTripDate.Name = "dtTimePickerTripDate";
             dtTimePickerTripDate.Size = new Size(224, 27);
             dtTimePickerTripDate.TabIndex = 4;
@@ -88,26 +103,30 @@
             // txtDestination
             // 
             txtDestination.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            txtDestination.Location = new Point(19, 92);
+            txtDestination.Location = new Point(19, 73);
             txtDestination.Name = "txtDestination";
             txtDestination.Size = new Size(224, 31);
             txtDestination.TabIndex = 3;
             txtDestination.Text = "Куди?";
+            txtDestination.Enter += txtDestination_Enter;
+            txtDestination.Leave += txtDestination_Leave;
             // 
             // txtDeparture
             // 
             txtDeparture.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            txtDeparture.Location = new Point(19, 38);
+            txtDeparture.Location = new Point(19, 24);
             txtDeparture.Name = "txtDeparture";
             txtDeparture.Size = new Size(224, 31);
             txtDeparture.TabIndex = 2;
             txtDeparture.Text = "Звідки?";
+            txtDeparture.Enter += txtDeparture_Enter;
+            txtDeparture.Leave += txtDeparture_Leave;
             // 
             // lblMotivation
             // 
             lblMotivation.AutoSize = true;
             lblMotivation.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold);
-            lblMotivation.Location = new Point(84, 116);
+            lblMotivation.Location = new Point(81, 96);
             lblMotivation.Name = "lblMotivation";
             lblMotivation.Size = new Size(522, 76);
             lblMotivation.TabIndex = 1;
@@ -127,6 +146,7 @@
             btnViewTripHistory.TabIndex = 2;
             btnViewTripHistory.Text = "Історія поїздок";
             btnViewTripHistory.UseVisualStyleBackColor = false;
+            btnViewTripHistory.Click += btnViewTripHistory_Click;
             // 
             // btnViewProfile
             // 
@@ -141,6 +161,7 @@
             btnViewProfile.TabIndex = 6;
             btnViewProfile.Text = "Профіль";
             btnViewProfile.UseVisualStyleBackColor = false;
+            btnViewProfile.Click += btnViewProfile_Click;
             // 
             // btnExit
             // 
@@ -154,6 +175,7 @@
             btnExit.TabIndex = 7;
             btnExit.Text = "Вийти";
             btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
             // 
             // DriverMainForm
             // 
@@ -169,6 +191,7 @@
             Text = "Driver";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nmrcUpDownSeats).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,10 +203,11 @@
         private TextBox txtDeparture;
         private TextBox txtDestination;
         private DateTimePicker dtTimePickerTripDate;
-        private TextBox txtSeatsAvailable;
         private Button btnCreateTrip;
         private Button btnViewTripHistory;
         private Button btnViewProfile;
         private Button btnExit;
+        private NumericUpDown nmrcUpDownSeats;
+        private Label lblSeats;
     }
 }

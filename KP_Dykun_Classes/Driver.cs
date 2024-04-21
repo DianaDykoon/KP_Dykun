@@ -17,6 +17,8 @@ namespace KP_Dykun_Classes
         private string _name;
         private byte[] _photo;
 
+        //public List<int> _tripNumbers = new ();
+
         public override string Login
         {
             get => _login;

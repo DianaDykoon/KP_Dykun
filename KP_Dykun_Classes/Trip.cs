@@ -68,7 +68,7 @@ namespace KP_Dykun_Classes
 
         public string TripInfo()
         {
-            return $"{Driver.Name}, {Date.Day}.{Date.Month}.{Date.Year}, {PointOfDeparture}, " +
+            return $"{Number}, {Driver.Name}, {Date.Day}.{Date.Month}.{Date.Year}, {PointOfDeparture}, " +
                 $"{Destination}, {NumberOfSeats}";
         }
     }

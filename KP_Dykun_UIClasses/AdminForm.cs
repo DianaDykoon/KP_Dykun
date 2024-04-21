@@ -15,12 +15,16 @@ namespace KP_Dykun_UIClasses
 
             drivers = ReadDriversFromFileJson("drivers.json");
             companions = ReadCompanionsFromFileJson("companions.json");
+            trips = ReadTripsFromFileJson("trips.json");
 
             foreach (var driver in drivers)
                 listDrivers.Items.Add(driver.DriverInfo());
 
             foreach (var companion in companions)
                 listCompanions.Items.Add(companion.CompanionInfo());
+
+            foreach (var trip in trips)
+                listTrips.Items.Add(trip.TripInfo());
         }
 
         static List<Driver>? ReadDriversFromFileJson(string path)
