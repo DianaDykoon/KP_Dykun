@@ -17,7 +17,13 @@ namespace KP_Dykun_Classes
         private string _destination;
         private short _NumberOfSeats;
         private Driver _driver;
-        public List<Companion> companions;
+        private List<Companion> companions;
+
+        public List<Companion> Companions
+        {
+            get { return companions; }
+            set { companions = value; }
+        }
 
         public int Number
         {
@@ -64,6 +70,11 @@ namespace KP_Dykun_Classes
             Driver = driver;
             companions = new List<Companion>();
             Number = currentNumber++;
+        }
+
+        public void AddCompanion (Companion companion)
+        {
+            companions.Add(companion);
         }
 
         public string TripInfo()

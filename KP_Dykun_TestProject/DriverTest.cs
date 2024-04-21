@@ -234,65 +234,6 @@ namespace KP_Dykun_TestProject
             Assert.AreEqual(0, driverTrips.Count);
         }
 
-        [TestMethod]
-        public void RateCompanionTest_driver_not_travel_with_companion()
-        {
-            // Arrange
-            List<Trip> trips = new();
-            string login = "Jackson07";
-            Driver driver = new(login, "1234567", "+38(099)-7843126", "Jackson");
-
-            Companion companion = new("Alex1", "4321123", "+38(099)-7543326", "Alex");
-            Trip trip = new Trip(new DateTime(2024, 3, 12), "Kharkiv", "Poltava", 2, driver);
-            trips.Add(trip);
-
-            // Act
-            bool actual = driver.RateCompanion(1, companion, 5, trips);
-
-            // Assert
-            Assert.IsFalse(actual);
-        }
-
-        [TestMethod]
-        public void RateCompanionTest_grade_less_0()
-        {
-            // Arrange
-            List<Trip> trips = new();
-            string login = "Jackson07";
-            Driver driver = new(login, "1234567", "+38(099)-7843126", "Jackson");
-
-            Companion companion = new("Alex1", "4321123", "+38(099)-7543326", "Alex");
-            Trip trip = new Trip(new DateTime(2024, 3, 12), "Kharkiv", "Poltava", 2, driver);
-            trips.Add(trip);
-            trip.companions.Add(companion);
-
-            // Act
-            bool actual = driver.RateCompanion(2, companion, -2, trips);
-
-            // Assert
-            Assert.IsFalse(actual);
-        }
-
-        [TestMethod]
-        public void RateCompanionTest_grade_more_0_driver_travel_with_companion()
-        {
-            // Arrange
-            List<Trip> trips = new();
-            string login = "Jackson07";
-            Driver driver = new(login, "1234567", "+38(099)-7843126", "Jackson");
-
-            Companion companion = new("Alex1", "4321123", "+38(099)-7543326", "Alex");
-            Trip trip = new Trip(new DateTime(2024, 3, 12), "Kharkiv", "Poltava", 2, driver);
-            trip.companions.Add(companion);
-            trips.Add(trip);
-
-
-            // Act
-            bool actual = driver.RateCompanion(trip.Number, companion, 5, trips);
-
-            // Assert
-            Assert.IsTrue(actual);
-        }
 
         [TestMethod]
         public void LoadPhotoTest_incorrect_format()

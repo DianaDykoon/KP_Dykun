@@ -37,15 +37,15 @@ namespace KP_Dykun_UIClasses
             {
                 listCompanions.Text = "";
                 listCompanions.Visible = true;
-                string driverInfo = listTripHistory.SelectedItem.ToString();
-                string[] splitDriverInfo = driverInfo.Split(",");
+                string tripInfo = listTripHistory.SelectedItem.ToString();
+                string[] splitTripInfo = tripInfo.Split(",");
 
                 foreach (Trip trip in trips)
                 {
-                    if (trip.Number == int.Parse(splitDriverInfo[0]))
+                    if (trip.Number == int.Parse(splitTripInfo[0]))
                     {
-                        foreach (var companion in trip.companions)
-                            listTripHistory.Items.Add(companion.CompanionInfo());
+                        foreach (var companion in trip.Companions)
+                            listCompanions.Items.Add(companion.CompanionInfo());
                     }
                 }
             }

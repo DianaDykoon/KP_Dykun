@@ -189,25 +189,6 @@ namespace KP_Dykun_TestProject
         }
 
         [TestMethod]
-        public void BookPlaceTest_date_incorrect()
-        {
-            // Arrange
-            List<Trip> trips = new List<Trip>();
-            string login = "Alex10";
-            Companion companion = new(login, "1234567", "+38(099)-9811127", "Alex");
-
-            Driver driver = new("Jackson07", "1234567", "+38(099)-7843126", "Jackson");
-            Trip trip = new Trip(new DateTime(2024, 3, 18), "Kharkiv", "Poltava", 2, driver);
-            trips.Add(trip);
-
-            // Act
-            bool actual = companion.BookPlace(trip.Number, 1, new DateTime(2024, 3, 19), trips);
-
-            // Assert
-            Assert.IsFalse(actual);
-        }
-
-        [TestMethod]
         public void BookPlaceTest_trip_not_found()
         {
             // Arrange
@@ -216,7 +197,7 @@ namespace KP_Dykun_TestProject
             List<Trip> trips = new List<Trip>();
 
             // Act
-            bool actual = companion.BookPlace(1, 1, new DateTime(2024, 3, 18), trips);
+            bool actual = companion.BookPlace(1, 1, trips);
 
             // Assert
             Assert.IsFalse(actual);
@@ -236,7 +217,7 @@ namespace KP_Dykun_TestProject
 
 
             // Act
-            bool actual = companion.BookPlace(trip.Number, 1, new DateTime(2024, 3, 18), trips);
+            bool actual = companion.BookPlace(trip.Number, 1, trips);
 
             // Assert
             Assert.IsTrue(actual);
@@ -281,61 +262,6 @@ namespace KP_Dykun_TestProject
 
             // Assert
             Assert.AreEqual(0, companionTrips.Count);
-        }
-
-        [TestMethod]
-        public void RateDriverTest_companion_not_travel_with_driver()
-        {
-            // Arrange
-            List<Trip> trips = new();
-            string login = "Jackson07";
-            Driver driver = new(login, "1234567", "+38(099)-7843126", "Jackson");
-
-            Companion companion = new("Alex10", "1234567", "+38(099)-9811127", "Alex");
-
-            // Act
-            bool actual = companion.RateDriver(1, driver, 5, trips);
-
-            // Assert
-            Assert.IsFalse(actual);
-        }
-
-        [TestMethod]
-        public void RateDriverTest_grade_less_0()
-        {
-            // Arrange
-            List<Trip> trips = new();
-            Driver driver = new("Jackson07", "1234567", "+38(099)-7843126", "Jackson");
-
-            Companion companion = new("Alex10", "1234567", "+38(099)-9811127", "Alex");
-            Trip trip = new Trip(new DateTime(2024, 3, 12), "Kharkiv", "Poltava", 1, driver);
-            trip.companions.Add(companion);
-            trips.Add(trip);
-
-            // Act
-            bool actual = companion.RateDriver(trip.Number, driver, -2, trips);
-
-            // Assert
-            Assert.IsFalse(actual);
-        }
-
-        [TestMethod]
-        public void RateDriverTest_grade_more_0_companion_travel_with_driver()
-        {
-            // Arrange
-            List<Trip> trips = new();
-            Driver driver = new("Jackson07", "1234567", "+38(099)-7843126", "Jackson");
-
-            Companion companion = new("Alex10", "1234567", "+38(099)-9811127", "Alex");
-            Trip trip = new Trip(new DateTime(2024, 3, 12), "Kharkiv", "Poltava", 1, driver);
-            trip.companions.Add(companion);
-            trips.Add(trip);
-
-            // Act
-            bool actual = companion.RateDriver(trip.Number, driver, 5, trips);
-
-            // Assert
-            Assert.IsTrue(actual);
         }
 
         [TestMethod]

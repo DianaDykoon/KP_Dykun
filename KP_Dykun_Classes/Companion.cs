@@ -93,13 +93,13 @@ namespace KP_Dykun_Classes
             return true;
         }
 
-        public bool BookPlace(int tripNumber, short numberOfSeatsRequired, DateTime date, List<Trip> trips)
+        public bool BookPlace(int tripNumber, short numberOfSeatsRequired, List<Trip> trips)
         {
             var trip = trips.Where(t => t.Number == tripNumber).FirstOrDefault();
             if (trip is null)
                 return false;
 
-            if (numberOfSeatsRequired > trip.NumberOfSeats || date != trip.Date)
+            if (numberOfSeatsRequired > trip.NumberOfSeats)
                 return false;
 
             return true;
@@ -110,36 +110,11 @@ namespace KP_Dykun_Classes
             List<Trip> companionTrip = new List<Trip>();
             foreach (var trip in trips)
             {
-                foreach (var comTrip in trip.companions)
+                foreach (var comTrip in trip.Companions)
                     if (comTrip.Login == login)
                         companionTrip.Add(trip);
             }
             return companionTrip;
-        }
-
-        public bool RateDriver(int numberOfTrip, Driver driver, int grade, List<Trip> trips)
-        {
-            if (grade < 0)
-                return false;
-            var trip = trips.Where(s => s.Number == numberOfTrip).FirstOrDefault();
-
-            if (trip is null)
-                return false;
-
-            if (trip.Driver != driver)
-                return false;
-
-            bool companionExist = false;
-            foreach (var companion in trip.companions)
-            {
-                if (companion.Login == Login)
-                {
-                    companionExist = true;
-                    break;
-                }
-            }
-
-            return companionExist;
         }
 
         public bool LoadPhoto(string filePath)

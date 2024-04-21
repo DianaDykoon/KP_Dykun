@@ -108,25 +108,6 @@ namespace KP_Dykun_Classes
             return driverTrip;
         }
 
-        public bool RateCompanion(int numberOfTrip, Companion companion, int grade, List<Trip> trips)
-        {
-            if (grade < 0)
-                return false;
-            var p = trips.Where(s => s.Number == numberOfTrip).ToList();
-
-            if (p.Count == 0)
-                return false;
-
-            foreach (var trip in p)
-            {
-                if (trip.Driver.Login != Login)
-                    return false;
-                if (!trip.companions.Contains(companion))
-                    return false;
-            }
-            return true;
-        }
-
         public bool LoadPhoto(string filePath)
         {
             if (!File.Exists(filePath))
