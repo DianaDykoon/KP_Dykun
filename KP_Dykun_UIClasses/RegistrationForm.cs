@@ -59,11 +59,13 @@ namespace KP_Dykun_UIClasses
             companionRegistration.Login = login;
             companionRegistration.Password = password;
             companionRegistration.PhoneNumber = phoneNumber;
+            companionRegistration.LoadPhoto("C:\\Users\\User\\Pictures\\Saved Pictures\\UserPhoto.jpg");
 
             driverRegistration.Name = name;
             driverRegistration.Login = login;
             driverRegistration.Password = password;
             driverRegistration.PhoneNumber = phoneNumber;
+            driverRegistration.LoadPhoto("C:\\Users\\User\\Pictures\\Saved Pictures\\UserPhoto.jpg");
 
             switch (role)
             {

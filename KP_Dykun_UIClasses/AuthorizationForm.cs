@@ -85,7 +85,7 @@ namespace KP_Dykun_UIClasses
 
             else if (driverAuthoriz.Authorization(login, password, users))
             {
-                var user = drivers.Where(x => x.Login == login && x.Password == password).ToList();
+                var user = drivers.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 try
                 {
                     string jsonstring = "";

@@ -31,8 +31,7 @@ namespace KP_Dykun_UIClasses
 
             try
             {
-                drivers = JsonSerializer.Deserialize<List<Driver>>(File.ReadAllText("User.json"));
-                driver = drivers!.FirstOrDefault();
+                driver = JsonSerializer.Deserialize<Driver>(File.ReadAllText("User.json"));
             }
             catch (IOException ex)
             {
@@ -46,7 +45,10 @@ namespace KP_Dykun_UIClasses
 
         private void btnViewTripHistory_Click(object sender, EventArgs e)
         {
-            Form form = new TravelHistoryForm();
+            TravelHistoryForm form = new TravelHistoryForm();
+            var driverTrips = trips.Where(t => t.Driver.Login == driver.Login).ToList();
+            foreach (var trip in driverTrips)
+                form.listTripHistory.Items.Add(trip.TripInfo());
             form.ShowDialog();
         }
 
@@ -73,6 +75,7 @@ namespace KP_Dykun_UIClasses
                 Trip trip = new Trip(date, pointOfDeparture, destination, numberOfAvailableSeats, driver);
                 trips!.Add(trip);
                 SaveTripsToFileJson(trips, "trips.json");
+                trips = ReadTripsFromFileJson("trips.json");
             }
 
             else if (pointOfDeparture.Length < 3)

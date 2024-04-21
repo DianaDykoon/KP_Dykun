@@ -31,6 +31,8 @@
             listTripHistory = new ListBox();
             lblTripHistory = new Label();
             btnReturnToMainForm = new Button();
+            listCompanions = new ListBox();
+            btnShowCompanions = new Button();
             SuspendLayout();
             // 
             // listTripHistory
@@ -38,8 +40,9 @@
             listTripHistory.FormattingEnabled = true;
             listTripHistory.Location = new Point(12, 202);
             listTripHistory.Name = "listTripHistory";
-            listTripHistory.Size = new Size(983, 224);
+            listTripHistory.Size = new Size(452, 224);
             listTripHistory.TabIndex = 0;
+            listTripHistory.SelectedIndexChanged += listTripHistory_SelectedIndexChanged;
             // 
             // lblTripHistory
             // 
@@ -64,26 +67,53 @@
             btnReturnToMainForm.TabIndex = 9;
             btnReturnToMainForm.Text = "На головну";
             btnReturnToMainForm.UseVisualStyleBackColor = false;
+            btnReturnToMainForm.Click += btnReturnToMainForm_Click;
+            // 
+            // listCompanions
+            // 
+            listCompanions.FormattingEnabled = true;
+            listCompanions.Location = new Point(642, 202);
+            listCompanions.Name = "listCompanions";
+            listCompanions.Size = new Size(288, 224);
+            listCompanions.TabIndex = 10;
+            listCompanions.Visible = false;
+            // 
+            // btnShowCompanions
+            // 
+            btnShowCompanions.BackColor = SystemColors.ControlDark;
+            btnShowCompanions.Cursor = Cursors.Hand;
+            btnShowCompanions.FlatStyle = FlatStyle.Popup;
+            btnShowCompanions.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnShowCompanions.ForeColor = SystemColors.ButtonHighlight;
+            btnShowCompanions.Location = new Point(470, 202);
+            btnShowCompanions.Name = "btnShowCompanions";
+            btnShowCompanions.Size = new Size(149, 81);
+            btnShowCompanions.TabIndex = 11;
+            btnShowCompanions.Text = "Показати\r\nПопутників";
+            btnShowCompanions.UseVisualStyleBackColor = false;
+            btnShowCompanions.Click += btnShowCompanions_Click;
             // 
             // TravelHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1007, 450);
+            ClientSize = new Size(942, 481);
+            Controls.Add(btnShowCompanions);
+            Controls.Add(listCompanions);
             Controls.Add(btnReturnToMainForm);
             Controls.Add(lblTripHistory);
             Controls.Add(listTripHistory);
             Name = "TravelHistoryForm";
             Text = "TravelHistory";
-            Load += TravelHistoryForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListBox listTripHistory;
         private Label lblTripHistory;
         private Button btnReturnToMainForm;
+        public ListBox listTripHistory;
+        public ListBox listCompanions;
+        private Button btnShowCompanions;
     }
 }
