@@ -31,16 +31,18 @@
             btnReturnToMainForm = new Button();
             btnViewTripHistory = new Button();
             panel1 = new Panel();
-            txtRating = new TextBox();
-            lblRating = new Label();
+            btnChangePhoto = new Button();
+            txtBoxPhoneNumber = new TextBox();
+            lblPhoneNumber = new Label();
+            txtBoxPassword = new TextBox();
+            lblPassword = new Label();
+            lblLogin = new Label();
+            txtBoxName = new TextBox();
             pctPhoto = new PictureBox();
             lblName = new Label();
-            lblInformation = new Label();
-            panel2 = new Panel();
-            txtInformation = new TextBox();
+            btnChangeProfile = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctPhoto).BeginInit();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // btnReturnToMainForm
@@ -56,6 +58,7 @@
             btnReturnToMainForm.TabIndex = 9;
             btnReturnToMainForm.Text = "На головну";
             btnReturnToMainForm.UseVisualStyleBackColor = false;
+            btnReturnToMainForm.Click += btnReturnToMainForm_Click;
             // 
             // btnViewTripHistory
             // 
@@ -70,44 +73,97 @@
             btnViewTripHistory.TabIndex = 10;
             btnViewTripHistory.Text = "Історія поїздок";
             btnViewTripHistory.UseVisualStyleBackColor = false;
+            btnViewTripHistory.Click += btnViewTripHistory_Click;
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(txtRating);
-            panel1.Controls.Add(lblRating);
+            panel1.Controls.Add(btnChangeProfile);
+            panel1.Controls.Add(btnChangePhoto);
+            panel1.Controls.Add(txtBoxPhoneNumber);
+            panel1.Controls.Add(lblPhoneNumber);
+            panel1.Controls.Add(txtBoxPassword);
+            panel1.Controls.Add(lblPassword);
+            panel1.Controls.Add(lblLogin);
+            panel1.Controls.Add(txtBoxName);
             panel1.Controls.Add(pctPhoto);
             panel1.Controls.Add(lblName);
             panel1.Location = new Point(76, 129);
             panel1.Name = "panel1";
-            panel1.Size = new Size(409, 160);
+            panel1.Size = new Size(468, 393);
             panel1.TabIndex = 11;
             // 
-            // txtRating
+            // btnChangePhoto
             // 
-            txtRating.Font = new Font("Segoe UI", 10.8F);
-            txtRating.Location = new Point(122, 94);
-            txtRating.Name = "txtRating";
-            txtRating.Size = new Size(40, 31);
-            txtRating.TabIndex = 16;
-            txtRating.Text = "4";
+            btnChangePhoto.BackColor = SystemColors.ButtonShadow;
+            btnChangePhoto.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnChangePhoto.ForeColor = SystemColors.ButtonHighlight;
+            btnChangePhoto.Location = new Point(245, 234);
+            btnChangePhoto.Name = "btnChangePhoto";
+            btnChangePhoto.Size = new Size(182, 41);
+            btnChangePhoto.TabIndex = 20;
+            btnChangePhoto.Text = "Змінити фото";
+            btnChangePhoto.UseVisualStyleBackColor = false;
+            btnChangePhoto.Click += btnChangePhoto_Click;
             // 
-            // lblRating
+            // txtBoxPhoneNumber
             // 
-            lblRating.AutoSize = true;
-            lblRating.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
-            lblRating.Location = new Point(17, 90);
-            lblRating.Name = "lblRating";
-            lblRating.Size = new Size(99, 32);
-            lblRating.TabIndex = 14;
-            lblRating.Text = "Оцінка:";
+            txtBoxPhoneNumber.Location = new Point(17, 295);
+            txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
+            txtBoxPhoneNumber.Size = new Size(176, 27);
+            txtBoxPhoneNumber.TabIndex = 19;
+            // 
+            // lblPhoneNumber
+            // 
+            lblPhoneNumber.AutoSize = true;
+            lblPhoneNumber.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblPhoneNumber.Location = new Point(17, 255);
+            lblPhoneNumber.Name = "lblPhoneNumber";
+            lblPhoneNumber.Size = new Size(124, 37);
+            lblPhoneNumber.TabIndex = 18;
+            lblPhoneNumber.Text = "Телефон";
+            // 
+            // txtBoxPassword
+            // 
+            txtBoxPassword.Location = new Point(17, 210);
+            txtBoxPassword.Name = "txtBoxPassword";
+            txtBoxPassword.Size = new Size(176, 27);
+            txtBoxPassword.TabIndex = 17;
+            // 
+            // lblPassword
+            // 
+            lblPassword.AutoSize = true;
+            lblPassword.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblPassword.Location = new Point(17, 170);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(112, 37);
+            lblPassword.TabIndex = 16;
+            lblPassword.Text = "Пароль";
+            // 
+            // lblLogin
+            // 
+            lblLogin.AutoSize = true;
+            lblLogin.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            lblLogin.Location = new Point(179, 13);
+            lblLogin.Name = "lblLogin";
+            lblLogin.Size = new Size(86, 37);
+            lblLogin.TabIndex = 15;
+            lblLogin.Text = "Логін";
+            // 
+            // txtBoxName
+            // 
+            txtBoxName.Location = new Point(17, 122);
+            txtBoxName.Name = "txtBoxName";
+            txtBoxName.Size = new Size(113, 27);
+            txtBoxName.TabIndex = 14;
             // 
             // pctPhoto
             // 
             pctPhoto.BorderStyle = BorderStyle.FixedSingle;
-            pctPhoto.Location = new Point(203, 22);
+            pctPhoto.Location = new Point(245, 82);
             pctPhoto.Name = "pctPhoto";
-            pctPhoto.Size = new Size(182, 112);
+            pctPhoto.Size = new Size(182, 146);
+            pctPhoto.SizeMode = PictureBoxSizeMode.CenterImage;
             pctPhoto.TabIndex = 13;
             pctPhoto.TabStop = false;
             // 
@@ -115,45 +171,32 @@
             // 
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
-            lblName.Location = new Point(17, 22);
+            lblName.Location = new Point(17, 82);
             lblName.Name = "lblName";
             lblName.Size = new Size(66, 37);
             lblName.TabIndex = 12;
             lblName.Text = "Ім'я";
             // 
-            // lblInformation
+            // btnChangeProfile
             // 
-            lblInformation.AutoSize = true;
-            lblInformation.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
-            lblInformation.Location = new Point(17, 30);
-            lblInformation.Name = "lblInformation";
-            lblInformation.Size = new Size(122, 32);
-            lblInformation.TabIndex = 14;
-            lblInformation.Text = "Про Себе";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ControlLight;
-            panel2.Controls.Add(txtInformation);
-            panel2.Controls.Add(lblInformation);
-            panel2.Location = new Point(76, 325);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(409, 160);
-            panel2.TabIndex = 15;
-            // 
-            // txtInformation
-            // 
-            txtInformation.Location = new Point(17, 85);
-            txtInformation.Name = "txtInformation";
-            txtInformation.Size = new Size(368, 27);
-            txtInformation.TabIndex = 15;
+            btnChangeProfile.BackColor = SystemColors.ButtonShadow;
+            btnChangeProfile.Cursor = Cursors.Hand;
+            btnChangeProfile.FlatStyle = FlatStyle.Popup;
+            btnChangeProfile.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnChangeProfile.ForeColor = SystemColors.ButtonHighlight;
+            btnChangeProfile.Location = new Point(116, 337);
+            btnChangeProfile.Name = "btnChangeProfile";
+            btnChangeProfile.Size = new Size(207, 44);
+            btnChangeProfile.TabIndex = 21;
+            btnChangeProfile.Text = "Змінити";
+            btnChangeProfile.UseVisualStyleBackColor = false;
+            btnChangeProfile.Click += btnChangeProfile_Click;
             // 
             // UserProfileForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(608, 574);
-            Controls.Add(panel2);
+            ClientSize = new Size(608, 547);
             Controls.Add(panel1);
             Controls.Add(btnViewTripHistory);
             Controls.Add(btnReturnToMainForm);
@@ -162,8 +205,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pctPhoto).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -173,11 +214,14 @@
         private Button btnViewTripHistory;
         private Panel panel1;
         private Label lblName;
-        private PictureBox pctPhoto;
-        private Label lblInformation;
-        private Panel panel2;
-        private TextBox txtRating;
-        private Label lblRating;
-        private TextBox txtInformation;
+        private Label lblPhoneNumber;
+        private Label lblPassword;
+        private Button btnChangePhoto;
+        public PictureBox pctPhoto;
+        public TextBox txtBoxPhoneNumber;
+        public TextBox txtBoxPassword;
+        public Label lblLogin;
+        public TextBox txtBoxName;
+        private Button btnChangeProfile;
     }
 }

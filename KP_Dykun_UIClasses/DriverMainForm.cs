@@ -20,8 +20,6 @@ namespace KP_Dykun_UIClasses
         short numberOfAvailableSeats = 0;
         DateTime date = new DateTime();
         List<Trip>? trips = new();
-
-        List<Driver>? drivers = new();
         Driver? driver = new Driver();
 
         public DriverMainForm()
@@ -54,7 +52,13 @@ namespace KP_Dykun_UIClasses
 
         private void btnViewProfile_Click(object sender, EventArgs e)
         {
-            Form form = new UserProfileForm();
+            UserProfileForm form = new UserProfileForm();
+            form.lblLogin.Text = driver.Login;
+            form.txtBoxName.Text = driver.Name;
+            form.txtBoxPassword.Text = driver.Password;
+            form.txtBoxPhoneNumber.Text = driver.PhoneNumber;
+            Image image = Image.FromStream(new MemoryStream(driver.Photo));
+            form.pctPhoto.Image = image;
             form.ShowDialog();
         }
 
