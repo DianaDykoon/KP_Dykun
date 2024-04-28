@@ -78,7 +78,7 @@ namespace KP_Dykun_UIClasses
                     }
                     if (companionRegistration.Registration(login, password, name, phoneNumber))
                     {
-                        companions.Add(companionRegistration);
+                        companions!.Add(companionRegistration);
                         SaveCompanionsToFileJson(companions, "companions.json");
 
                         try
@@ -118,7 +118,7 @@ namespace KP_Dykun_UIClasses
                     }
                     if (driverRegistration.Registration(login, password, name, phoneNumber))
                     {
-                        drivers.Add(driverRegistration);
+                        drivers!.Add(driverRegistration);
                         SaveDriversToFileJson(drivers, "drivers.json");
 
                         try

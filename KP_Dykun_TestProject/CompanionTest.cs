@@ -235,9 +235,9 @@ namespace KP_Dykun_TestProject
             Driver driver = new("Jackson07", "1234567", "+38(099)-7843126", "Jackson");
 
             Trip trip = new Trip(new DateTime(2024, 3, 10), "Kharkiv", "Poltava", 2, driver);
-            trip.companions.Add(companion);
+            trip.Companions.Add(companion);
             Trip trip2 = new Trip(new DateTime(2024, 3, 12), "Poltava", "Kharkiv", 2, driver);
-            trip2.companions.Add(companion);
+            trip2.Companions.Add(companion);
 
             trips.Add(trip);
             trips.Add(trip2);

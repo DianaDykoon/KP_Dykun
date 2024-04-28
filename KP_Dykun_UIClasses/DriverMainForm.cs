@@ -44,7 +44,7 @@ namespace KP_Dykun_UIClasses
         private void btnViewTripHistory_Click(object sender, EventArgs e)
         {
             TravelHistoryForm form = new TravelHistoryForm();
-            var driverTrips = trips.Where(t => t.Driver.Login == driver!.Login && t.Date < DateTime.Now).ToList();
+            var driverTrips = trips!.Where(t => t.Driver.Login == driver!.Login && t.Date < DateTime.Now).ToList();
             foreach (var trip in driverTrips)
                 form.listTripHistory.Items.Add(trip.TripInfo());
             form.ShowDialog();
@@ -53,7 +53,7 @@ namespace KP_Dykun_UIClasses
         private void btnViewProfile_Click(object sender, EventArgs e)
         {
             UserProfileForm form = new UserProfileForm();
-            form.lblLogin.Text = driver.Login;
+            form.lblLogin.Text = driver!.Login;
             form.txtBoxName.Text = driver.Name;
             form.txtBoxPassword.Text = driver.Password;
             form.txtBoxPhoneNumber.Text = driver.PhoneNumber;
@@ -73,7 +73,7 @@ namespace KP_Dykun_UIClasses
             destination = txtDestination.Text;
             numberOfAvailableSeats = short.Parse(nmrcUpDownSeats.Text);
 
-            if (driver.CreateTrip(date, numberOfAvailableSeats, pointOfDeparture, destination))
+            if (driver!.CreateTrip(date, numberOfAvailableSeats, pointOfDeparture, destination))
             {
                 Trip trip = new Trip(date, pointOfDeparture, destination, numberOfAvailableSeats, driver);
                 trips!.Add(trip);

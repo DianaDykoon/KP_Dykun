@@ -45,7 +45,7 @@ namespace KP_Dykun_UIClasses
             ofd.Filter = "Изображения (*.jpg, *.bmp) | *.jpg;*.bmp";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                foreach (var companion in companions)
+                foreach (var companion in companions!)
                 {
                     if (companion.Login == lblLogin.Text)
                     {
@@ -59,7 +59,7 @@ namespace KP_Dykun_UIClasses
                     }
                 }
 
-                foreach (var driver in drivers)
+                foreach (var driver in drivers!)
                 {
                     if (driver.Login == lblLogin.Text)
                     {
@@ -78,7 +78,7 @@ namespace KP_Dykun_UIClasses
 
         private void btnChangeProfile_Click(object sender, EventArgs e)
         {
-            foreach (var companion in companions)
+            foreach (var companion in companions!)
             {
                 if (companion.Login == lblLogin.Text)
                 {
@@ -102,7 +102,7 @@ namespace KP_Dykun_UIClasses
                 }
             }
 
-            foreach (var driver in drivers)
+            foreach (var driver in drivers!)
             {
                 if (driver.Login == lblLogin.Text)
                 {
@@ -161,23 +161,6 @@ namespace KP_Dykun_UIClasses
                 MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return companions;
-        }
-        static List<Administrator>? ReadAdministratorsFromFileJson(string path)
-        {
-            List<Administrator>? administrators = null;
-            try
-            {
-                administrators = JsonSerializer.Deserialize<List<Administrator>>(File.ReadAllText(path));
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show($"Помилка при читаннi з JSON файлу: {ex.Message}", "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return administrators;
         }
 
         static void SaveDriversToFileJson(List<Driver> drivers, string path)

@@ -49,11 +49,11 @@ namespace KP_Dykun_UIClasses
         private void btnViewTripHistory_Click(object sender, EventArgs e)
         {
             TravelHistoryForm form = new TravelHistoryForm();
-            foreach (var trip in trips)
+            foreach (var trip in trips!)
             {
                 foreach (var comp in trip.Companions)
                 {
-                    if (comp.Login == companion.Login && trip.Date < DateTime.Now)
+                    if (comp.Login == companion!.Login && trip.Date < DateTime.Now)
                         form.listTripHistory.Items.Add(trip.TripInfo());
                 }
             }
@@ -88,7 +88,7 @@ namespace KP_Dykun_UIClasses
         private void btnViewProfile_Click(object sender, EventArgs e)
         {
             UserProfileForm form = new UserProfileForm();
-            form.lblLogin.Text = companion.Login;
+            form.lblLogin.Text = companion!.Login;
             form.txtBoxName.Text = companion.Name;
             form.txtBoxPassword.Text = companion.Password;
             form.txtBoxPhoneNumber.Text = companion.PhoneNumber;
@@ -140,9 +140,9 @@ namespace KP_Dykun_UIClasses
             lstBoxHeaders.Visible = true;
             btnBookPlace.Visible = true;
 
-            if (companion.SearchTrip(date, numberOfSeats, pointOfDeparture, destination))
+            if (companion!.SearchTrip(date, numberOfSeats, pointOfDeparture, destination))
             {
-                var foundTrips = trips.Where(x => x.Destination == destination &&
+                var foundTrips = trips!.Where(x => x.Destination == destination &&
                     x.PointOfDeparture == pointOfDeparture &&
                     x.NumberOfSeats >= numberOfSeats && x.Date.Year == date.Year &&
                     x.Date.Month == date.Month && x.Date.Day == date.Day).ToList();
@@ -157,9 +157,9 @@ namespace KP_Dykun_UIClasses
         {
             try
             {
-                string tripInfo = listFoundTrips.SelectedItem.ToString();
+                string tripInfo = listFoundTrips.SelectedItem!.ToString()!;
                 string[] splitTripInfo = tripInfo.Split(",");
-                foreach (var foundTrip in trips)
+                foreach (var foundTrip in trips!)
                 {
                     if (foundTrip.Number == int.Parse(splitTripInfo[0]))
                     {

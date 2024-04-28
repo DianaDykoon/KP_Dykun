@@ -65,7 +65,7 @@ namespace KP_Dykun_UIClasses
             administratorAuthoriz.Login = login;
             administratorAuthoriz.Password = password;
 
-            if (companionAuthoriz.Authorization(login, password, users))
+            if (companionAuthoriz.Authorization(login, password, users!))
             {
                 var user = companions!.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 try
@@ -83,9 +83,9 @@ namespace KP_Dykun_UIClasses
                 companionForm.ShowDialog();
             }
 
-            else if (driverAuthoriz.Authorization(login, password, users))
+            else if (driverAuthoriz.Authorization(login, password, users!))
             {
-                var user = drivers.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
+                var user = drivers!.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 try
                 {
                     string jsonstring = "";
@@ -101,9 +101,9 @@ namespace KP_Dykun_UIClasses
                 driverForm.ShowDialog();
             }
 
-            else if (administratorAuthoriz.Authorization(login, password, users))
+            else if (administratorAuthoriz.Authorization(login, password, users!))
             {
-                var user = administrators.Where(x => x.Login == login && x.Password == password).ToList();
+                var user = administrators!.Where(x => x.Login == login && x.Password == password).ToList();
                 try
                 {
                     string jsonstring = "";

@@ -17,13 +17,13 @@ namespace KP_Dykun_UIClasses
             companions = ReadCompanionsFromFileJson("companions.json");
             trips = ReadTripsFromFileJson("trips.json");
 
-            foreach (var driver in drivers)
+            foreach (var driver in drivers!)
                 listDrivers.Items.Add(driver.DriverInfo());
 
-            foreach (var companion in companions)
+            foreach (var companion in companions!)
                 listCompanions.Items.Add(companion.CompanionInfo());
 
-            foreach (var trip in trips)
+            foreach (var trip in trips!)
                 listTrips.Items.Add(trip.TripInfo());
         }
 
@@ -126,7 +126,7 @@ namespace KP_Dykun_UIClasses
         {
             try
             {
-                string driverInfo = listDrivers.SelectedItem.ToString();
+                string driverInfo = listDrivers.SelectedItem!.ToString()!;
                 string[] splitDriverInfo = driverInfo.Split(",");
 
                 drivers!.Remove(drivers.First(p => p.Login == splitDriverInfo[0]));
@@ -146,7 +146,7 @@ namespace KP_Dykun_UIClasses
         {
             try
             {
-                string companionInfo = listCompanions.SelectedItem.ToString();
+                string companionInfo = listCompanions.SelectedItem!.ToString()!;
                 string[] splitCompanionInfo = companionInfo.Split(",");
 
                 companions!.Remove(companions.First(p => p.Login == splitCompanionInfo[0]));
@@ -167,7 +167,7 @@ namespace KP_Dykun_UIClasses
         {
             try
             {
-                string tripInfo = listTrips.SelectedItem.ToString();
+                string tripInfo = listTrips.SelectedItem!.ToString()!;
                 string[] splitTripInfo = tripInfo.Split(",");
 
                 trips!.Remove(trips.First(p => p.Number == int.Parse(splitTripInfo[0])));

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             btnReturnToMainForm = new Button();
-            btnViewTripHistory = new Button();
             panel1 = new Panel();
+            btnChangeProfile = new Button();
             btnChangePhoto = new Button();
             txtBoxPhoneNumber = new TextBox();
             lblPhoneNumber = new Label();
@@ -40,7 +40,6 @@
             txtBoxName = new TextBox();
             pctPhoto = new PictureBox();
             lblName = new Label();
-            btnChangeProfile = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctPhoto).BeginInit();
             SuspendLayout();
@@ -60,21 +59,6 @@
             btnReturnToMainForm.UseVisualStyleBackColor = false;
             btnReturnToMainForm.Click += btnReturnToMainForm_Click;
             // 
-            // btnViewTripHistory
-            // 
-            btnViewTripHistory.BackColor = SystemColors.ButtonShadow;
-            btnViewTripHistory.Cursor = Cursors.Hand;
-            btnViewTripHistory.FlatStyle = FlatStyle.Popup;
-            btnViewTripHistory.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnViewTripHistory.ForeColor = SystemColors.ButtonHighlight;
-            btnViewTripHistory.Location = new Point(365, 12);
-            btnViewTripHistory.Name = "btnViewTripHistory";
-            btnViewTripHistory.Size = new Size(231, 44);
-            btnViewTripHistory.TabIndex = 10;
-            btnViewTripHistory.Text = "Історія поїздок";
-            btnViewTripHistory.UseVisualStyleBackColor = false;
-            btnViewTripHistory.Click += btnViewTripHistory_Click;
-            // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
@@ -92,6 +76,21 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(468, 393);
             panel1.TabIndex = 11;
+            // 
+            // btnChangeProfile
+            // 
+            btnChangeProfile.BackColor = SystemColors.ButtonShadow;
+            btnChangeProfile.Cursor = Cursors.Hand;
+            btnChangeProfile.FlatStyle = FlatStyle.Popup;
+            btnChangeProfile.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnChangeProfile.ForeColor = SystemColors.ButtonHighlight;
+            btnChangeProfile.Location = new Point(116, 337);
+            btnChangeProfile.Name = "btnChangeProfile";
+            btnChangeProfile.Size = new Size(207, 44);
+            btnChangeProfile.TabIndex = 21;
+            btnChangeProfile.Text = "Змінити";
+            btnChangeProfile.UseVisualStyleBackColor = false;
+            btnChangeProfile.Click += btnChangeProfile_Click;
             // 
             // btnChangePhoto
             // 
@@ -177,28 +176,12 @@
             lblName.TabIndex = 12;
             lblName.Text = "Ім'я";
             // 
-            // btnChangeProfile
-            // 
-            btnChangeProfile.BackColor = SystemColors.ButtonShadow;
-            btnChangeProfile.Cursor = Cursors.Hand;
-            btnChangeProfile.FlatStyle = FlatStyle.Popup;
-            btnChangeProfile.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnChangeProfile.ForeColor = SystemColors.ButtonHighlight;
-            btnChangeProfile.Location = new Point(116, 337);
-            btnChangeProfile.Name = "btnChangeProfile";
-            btnChangeProfile.Size = new Size(207, 44);
-            btnChangeProfile.TabIndex = 21;
-            btnChangeProfile.Text = "Змінити";
-            btnChangeProfile.UseVisualStyleBackColor = false;
-            btnChangeProfile.Click += btnChangeProfile_Click;
-            // 
             // UserProfileForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(608, 547);
             Controls.Add(panel1);
-            Controls.Add(btnViewTripHistory);
             Controls.Add(btnReturnToMainForm);
             Name = "UserProfileForm";
             Text = "Profile";
@@ -211,7 +194,6 @@
         #endregion
 
         private Button btnReturnToMainForm;
-        private Button btnViewTripHistory;
         private Panel panel1;
         private Label lblName;
         private Label lblPhoneNumber;
