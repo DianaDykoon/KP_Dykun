@@ -42,6 +42,7 @@
             // listDrivers
             // 
             listDrivers.FormattingEnabled = true;
+            listDrivers.HorizontalScrollbar = true;
             listDrivers.Location = new Point(12, 94);
             listDrivers.Name = "listDrivers";
             listDrivers.Size = new Size(229, 264);
@@ -50,6 +51,7 @@
             // listTrips
             // 
             listTrips.FormattingEnabled = true;
+            listTrips.HorizontalScrollbar = true;
             listTrips.Location = new Point(624, 94);
             listTrips.Name = "listTrips";
             listTrips.Size = new Size(366, 264);
@@ -133,6 +135,7 @@
             // listCompanions
             // 
             listCompanions.FormattingEnabled = true;
+            listCompanions.HorizontalScrollbar = true;
             listCompanions.Location = new Point(317, 94);
             listCompanions.Name = "listCompanions";
             listCompanions.Size = new Size(229, 264);

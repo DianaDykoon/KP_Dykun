@@ -57,8 +57,7 @@ namespace KP_Dykun_UIClasses
             form.txtBoxName.Text = driver.Name;
             form.txtBoxPassword.Text = driver.Password;
             form.txtBoxPhoneNumber.Text = driver.PhoneNumber;
-            Image image = Image.FromStream(new MemoryStream(driver.Photo));
-            form.pctPhoto.Image = image;
+            form.pctPhoto.Image = Image.FromFile(driver.PhotoPath);
             form.ShowDialog();
         }
 
@@ -80,6 +79,11 @@ namespace KP_Dykun_UIClasses
                 trips!.Add(trip);
                 SaveTripsToFileJson(trips, "trips.json");
                 trips = ReadTripsFromFileJson("trips.json");
+                txtDeparture.Text = "";
+                txtDestination.Text = "";
+                nmrcUpDownSeats.ResetText();
+
+                MessageBox.Show("Поїздку успішно створено", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             else if (pointOfDeparture.Length < 3)

@@ -15,9 +15,7 @@ namespace KP_Dykun_Classes
         private string _password;
         private string _phoneNumber;
         private string _name;
-        private byte[] _photo;
-
-        //public List<int> _tripNumbers = new ();
+        private string _photoPath;
 
         public override string Login
         {
@@ -44,10 +42,10 @@ namespace KP_Dykun_Classes
             set => _name = value;
         }
 
-        public byte[] Photo
+        public string PhotoPath
         {
-            get => _photo;
-            set => _photo = value;
+            get => _photoPath;
+            set => _photoPath = value;
         }
 
         public Driver(string login, string password, string phoneNumber, string name)
@@ -117,7 +115,7 @@ namespace KP_Dykun_Classes
             if (!allowedFormat.Contains(extension))
                 return false;
 
-            Photo = File.ReadAllBytes(filePath);
+            PhotoPath = filePath;
             return true;
         }
 

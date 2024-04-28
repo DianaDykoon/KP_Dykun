@@ -14,7 +14,7 @@ namespace KP_Dykun_UIClasses
 {
     public partial class TravelHistoryForm : Form
     {
-        List<Trip> trips = new();
+        List<Trip>? trips = new();
         public TravelHistoryForm()
         {
             InitializeComponent();
@@ -35,12 +35,12 @@ namespace KP_Dykun_UIClasses
         {
             try
             {
-                listCompanions.Text = "";
+                listCompanions.Items.Clear();
                 listCompanions.Visible = true;
-                string tripInfo = listTripHistory.SelectedItem.ToString();
+                string tripInfo = listTripHistory.SelectedItem!.ToString()!;
                 string[] splitTripInfo = tripInfo.Split(",");
 
-                foreach (Trip trip in trips)
+                foreach (Trip trip in trips!)
                 {
                     if (trip.Number == int.Parse(splitTripInfo[0]))
                     {

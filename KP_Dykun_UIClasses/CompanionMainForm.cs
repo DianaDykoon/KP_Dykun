@@ -92,8 +92,7 @@ namespace KP_Dykun_UIClasses
             form.txtBoxName.Text = companion.Name;
             form.txtBoxPassword.Text = companion.Password;
             form.txtBoxPhoneNumber.Text = companion.PhoneNumber;
-            Image image = Image.FromStream(new MemoryStream(companion.Photo));
-            form.pctPhoto.Image = image;
+            form.pctPhoto.Image = Image.FromFile(companion.PhotoPath);
             form.ShowDialog();
         }
 
@@ -167,7 +166,9 @@ namespace KP_Dykun_UIClasses
                         if (companion!.BookPlace(foundTrip.Number, numberOfSeats, trips))
                         {
                             foundTrip.AddCompanion(companion);
-                            foundTrip.NumberOfSeats -= numberOfSeats;
+                            short foundTripNumberOfSeats = foundTrip.NumberOfSeats;
+                            short numberOfSeatsRequired = (short)(foundTripNumberOfSeats - numberOfSeats);
+                            foundTrip.NumberOfSeats = numberOfSeatsRequired;
                             MessageBox.Show("Місце успішно заброньовано", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
