@@ -39,6 +39,7 @@
             btnViewTripHistory = new Button();
             btnViewProfile = new Button();
             btnExit = new Button();
+            btnPlannedTrips = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nmrcUpDownSeats).BeginInit();
             SuspendLayout();
@@ -140,7 +141,7 @@
             btnViewTripHistory.FlatStyle = FlatStyle.Popup;
             btnViewTripHistory.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnViewTripHistory.ForeColor = SystemColors.ButtonHighlight;
-            btnViewTripHistory.Location = new Point(589, 12);
+            btnViewTripHistory.Location = new Point(688, 12);
             btnViewTripHistory.Name = "btnViewTripHistory";
             btnViewTripHistory.Size = new Size(231, 44);
             btnViewTripHistory.TabIndex = 2;
@@ -155,7 +156,7 @@
             btnViewProfile.FlatStyle = FlatStyle.Popup;
             btnViewProfile.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnViewProfile.ForeColor = SystemColors.ButtonHighlight;
-            btnViewProfile.Location = new Point(589, 68);
+            btnViewProfile.Location = new Point(688, 68);
             btnViewProfile.Name = "btnViewProfile";
             btnViewProfile.Size = new Size(231, 44);
             btnViewProfile.TabIndex = 6;
@@ -177,11 +178,27 @@
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
             // 
+            // btnPlannedTrips
+            // 
+            btnPlannedTrips.BackColor = SystemColors.ButtonShadow;
+            btnPlannedTrips.Cursor = Cursors.Hand;
+            btnPlannedTrips.FlatStyle = FlatStyle.Popup;
+            btnPlannedTrips.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnPlannedTrips.ForeColor = SystemColors.ButtonHighlight;
+            btnPlannedTrips.Location = new Point(319, 13);
+            btnPlannedTrips.Name = "btnPlannedTrips";
+            btnPlannedTrips.Size = new Size(237, 49);
+            btnPlannedTrips.TabIndex = 8;
+            btnPlannedTrips.Text = "Заплановані поїздки";
+            btnPlannedTrips.UseVisualStyleBackColor = false;
+            btnPlannedTrips.Click += btnPlannedTrips_Click;
+            // 
             // DriverMainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(842, 556);
+            ClientSize = new Size(942, 556);
+            Controls.Add(btnPlannedTrips);
             Controls.Add(btnExit);
             Controls.Add(btnViewProfile);
             Controls.Add(btnViewTripHistory);
@@ -209,5 +226,6 @@
         private Button btnExit;
         private NumericUpDown nmrcUpDownSeats;
         private Label lblSeats;
+        private Button btnPlannedTrips;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace KP_Dykun_UIClasses
 {
-    partial class TravelHistoryForm
+    partial class PlannedTravelsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,59 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listTripHistory = new ListBox();
-            lblTripHistory = new Label();
-            btnReturnToMainForm = new Button();
-            listCompanions = new ListBox();
             btnShowCompanions = new Button();
+            listCompanions = new ListBox();
+            btnReturnToMainForm = new Button();
+            lblTripPlanned = new Label();
+            listTripsPlanned = new ListBox();
             lstBoxHeaders = new ListBox();
             listCompanionsInfo = new ListBox();
             SuspendLayout();
-            // 
-            // listTripHistory
-            // 
-            listTripHistory.FormattingEnabled = true;
-            listTripHistory.HorizontalScrollbar = true;
-            listTripHistory.Location = new Point(12, 202);
-            listTripHistory.Name = "listTripHistory";
-            listTripHistory.Size = new Size(496, 224);
-            listTripHistory.TabIndex = 0;
-            listTripHistory.SelectedIndexChanged += listTripHistory_SelectedIndexChanged;
-            // 
-            // lblTripHistory
-            // 
-            lblTripHistory.AutoSize = true;
-            lblTripHistory.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Underline);
-            lblTripHistory.Location = new Point(12, 106);
-            lblTripHistory.Name = "lblTripHistory";
-            lblTripHistory.Size = new Size(308, 38);
-            lblTripHistory.TabIndex = 1;
-            lblTripHistory.Text = "Історія ваших поїздок";
-            // 
-            // btnReturnToMainForm
-            // 
-            btnReturnToMainForm.BackColor = SystemColors.GradientActiveCaption;
-            btnReturnToMainForm.Cursor = Cursors.Hand;
-            btnReturnToMainForm.FlatStyle = FlatStyle.Popup;
-            btnReturnToMainForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnReturnToMainForm.ForeColor = SystemColors.ButtonHighlight;
-            btnReturnToMainForm.Location = new Point(12, 12);
-            btnReturnToMainForm.Name = "btnReturnToMainForm";
-            btnReturnToMainForm.Size = new Size(160, 44);
-            btnReturnToMainForm.TabIndex = 9;
-            btnReturnToMainForm.Text = "На головну";
-            btnReturnToMainForm.UseVisualStyleBackColor = false;
-            btnReturnToMainForm.Click += btnReturnToMainForm_Click;
-            // 
-            // listCompanions
-            // 
-            listCompanions.FormattingEnabled = true;
-            listCompanions.HorizontalScrollbar = true;
-            listCompanions.Location = new Point(698, 202);
-            listCompanions.Name = "listCompanions";
-            listCompanions.Size = new Size(301, 224);
-            listCompanions.TabIndex = 10;
-            listCompanions.Visible = false;
             // 
             // btnShowCompanions
             // 
@@ -89,61 +44,106 @@
             btnShowCompanions.FlatStyle = FlatStyle.Popup;
             btnShowCompanions.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             btnShowCompanions.ForeColor = SystemColors.ButtonHighlight;
-            btnShowCompanions.Location = new Point(514, 234);
+            btnShowCompanions.Location = new Point(529, 226);
             btnShowCompanions.Name = "btnShowCompanions";
             btnShowCompanions.Size = new Size(149, 81);
-            btnShowCompanions.TabIndex = 11;
+            btnShowCompanions.TabIndex = 16;
             btnShowCompanions.Text = "Показати\r\nПопутників";
             btnShowCompanions.UseVisualStyleBackColor = false;
             btnShowCompanions.Click += btnShowCompanions_Click;
+            // 
+            // listCompanions
+            // 
+            listCompanions.FormattingEnabled = true;
+            listCompanions.HorizontalScrollbar = true;
+            listCompanions.Location = new Point(705, 226);
+            listCompanions.Name = "listCompanions";
+            listCompanions.Size = new Size(301, 224);
+            listCompanions.TabIndex = 15;
+            listCompanions.Visible = false;
+            // 
+            // btnReturnToMainForm
+            // 
+            btnReturnToMainForm.BackColor = SystemColors.GradientActiveCaption;
+            btnReturnToMainForm.Cursor = Cursors.Hand;
+            btnReturnToMainForm.FlatStyle = FlatStyle.Popup;
+            btnReturnToMainForm.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnReturnToMainForm.ForeColor = SystemColors.ButtonHighlight;
+            btnReturnToMainForm.Location = new Point(26, 25);
+            btnReturnToMainForm.Name = "btnReturnToMainForm";
+            btnReturnToMainForm.Size = new Size(160, 44);
+            btnReturnToMainForm.TabIndex = 14;
+            btnReturnToMainForm.Text = "На головну";
+            btnReturnToMainForm.UseVisualStyleBackColor = false;
+            btnReturnToMainForm.Click += btnReturnToMainForm_Click;
+            // 
+            // lblTripPlanned
+            // 
+            lblTripPlanned.AutoSize = true;
+            lblTripPlanned.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Underline);
+            lblTripPlanned.Location = new Point(26, 123);
+            lblTripPlanned.Name = "lblTripPlanned";
+            lblTripPlanned.Size = new Size(361, 38);
+            lblTripPlanned.TabIndex = 13;
+            lblTripPlanned.Text = "Ваші заплановані поїздки";
+            // 
+            // listTripsPlanned
+            // 
+            listTripsPlanned.FormattingEnabled = true;
+            listTripsPlanned.HorizontalScrollbar = true;
+            listTripsPlanned.Location = new Point(26, 226);
+            listTripsPlanned.Name = "listTripsPlanned";
+            listTripsPlanned.Size = new Size(496, 224);
+            listTripsPlanned.TabIndex = 12;
             // 
             // lstBoxHeaders
             // 
             lstBoxHeaders.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             lstBoxHeaders.FormattingEnabled = true;
             lstBoxHeaders.Items.AddRange(new object[] { "№ | Водій |  Дата | Відправка |  Призначення |  Залишилось місць" });
-            lstBoxHeaders.Location = new Point(12, 172);
+            lstBoxHeaders.Location = new Point(26, 196);
             lstBoxHeaders.Name = "lstBoxHeaders";
             lstBoxHeaders.SelectionMode = SelectionMode.None;
             lstBoxHeaders.Size = new Size(496, 24);
-            lstBoxHeaders.TabIndex = 18;
+            lstBoxHeaders.TabIndex = 17;
             // 
             // listCompanionsInfo
             // 
             listCompanionsInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             listCompanionsInfo.FormattingEnabled = true;
             listCompanionsInfo.Items.AddRange(new object[] { "Логін  |  Ім'я   |    Телефон" });
-            listCompanionsInfo.Location = new Point(698, 172);
+            listCompanionsInfo.Location = new Point(705, 196);
             listCompanionsInfo.Name = "listCompanionsInfo";
             listCompanionsInfo.SelectionMode = SelectionMode.None;
             listCompanionsInfo.Size = new Size(301, 24);
-            listCompanionsInfo.TabIndex = 19;
+            listCompanionsInfo.TabIndex = 18;
             listCompanionsInfo.Visible = false;
             // 
-            // TravelHistoryForm
+            // PlannedTravelsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1028, 466);
+            ClientSize = new Size(1043, 487);
             Controls.Add(listCompanionsInfo);
             Controls.Add(lstBoxHeaders);
             Controls.Add(btnShowCompanions);
             Controls.Add(listCompanions);
             Controls.Add(btnReturnToMainForm);
-            Controls.Add(lblTripHistory);
-            Controls.Add(listTripHistory);
-            Name = "TravelHistoryForm";
-            Text = "TravelHistory";
+            Controls.Add(lblTripPlanned);
+            Controls.Add(listTripsPlanned);
+            Name = "PlannedTravelsForm";
+            Text = "PlannedTravelsForm";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label lblTripHistory;
-        private Button btnReturnToMainForm;
-        public ListBox listTripHistory;
-        public ListBox listCompanions;
+
         private Button btnShowCompanions;
+        public ListBox listCompanions;
+        private Button btnReturnToMainForm;
+        private Label lblTripPlanned;
+        public ListBox listTripsPlanned;
         private ListBox lstBoxHeaders;
         private ListBox listCompanionsInfo;
     }

@@ -12,10 +12,11 @@ using System.Windows.Forms;
 
 namespace KP_Dykun_UIClasses
 {
-    public partial class TravelHistoryForm : Form
+    public partial class PlannedTravelsForm : Form
     {
         List<Trip>? trips = new();
-        public TravelHistoryForm()
+
+        public PlannedTravelsForm()
         {
             InitializeComponent();
             trips = ReadTripsFromFileJson("trips.json");
@@ -24,37 +25,6 @@ namespace KP_Dykun_UIClasses
         private void btnReturnToMainForm_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void listTripHistory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnShowCompanions.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-        }
-
-        private void btnShowCompanions_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                listCompanions.Items.Clear();
-                
-                string tripInfo = listTripHistory.SelectedItem!.ToString()!;
-                string[] splitTripInfo = tripInfo.Split(",");
-                listCompanions.Visible = true;
-                listCompanionsInfo.Visible = true;
-
-                foreach (Trip trip in trips!)
-                {
-                    if (trip.Number == int.Parse(splitTripInfo[0]))
-                    {
-                        foreach (var companion in trip.Companions)
-                            listCompanions.Items.Add(companion.CompanionInfo());
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Спочатку оберіть поїздку!", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         static List<Trip>? ReadTripsFromFileJson(string path)
@@ -73,6 +43,32 @@ namespace KP_Dykun_UIClasses
                 MessageBox.Show(ex.Message, "Помилка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return trips;
+        }
+
+        private void btnShowCompanions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listCompanions.Items.Clear();
+                
+                string tripInfo = listTripsPlanned.SelectedItem!.ToString()!;
+                string[] splitTripInfo = tripInfo.Split(",");
+                listCompanions.Visible = true;
+                listCompanionsInfo.Visible = true;
+
+                foreach (Trip trip in trips!)
+                {
+                    if (trip.Number == int.Parse(splitTripInfo[0]))
+                    {
+                        foreach (var companion in trip.Companions)
+                            listCompanions.Items.Add(companion.CompanionInfo());
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Спочатку оберіть поїздку!", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

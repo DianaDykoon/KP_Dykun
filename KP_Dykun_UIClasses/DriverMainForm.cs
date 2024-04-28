@@ -44,7 +44,7 @@ namespace KP_Dykun_UIClasses
         private void btnViewTripHistory_Click(object sender, EventArgs e)
         {
             TravelHistoryForm form = new TravelHistoryForm();
-            var driverTrips = trips.Where(t => t.Driver.Login == driver.Login).ToList();
+            var driverTrips = trips.Where(t => t.Driver.Login == driver!.Login && t.Date < DateTime.Now).ToList();
             foreach (var trip in driverTrips)
                 form.listTripHistory.Items.Add(trip.TripInfo());
             form.ShowDialog();
@@ -148,6 +148,15 @@ namespace KP_Dykun_UIClasses
         {
             if (txtDestination.Text.Length == 0)
                 txtDestination.Text = "Куди?";
+        }
+
+        private void btnPlannedTrips_Click(object sender, EventArgs e)
+        {
+            PlannedTravelsForm form = new ();
+            var driverTrips = trips!.Where(t => t.Driver.Login == driver!.Login && t.Date > DateTime.Now).ToList();
+            foreach (var trip in driverTrips)
+                form.listTripsPlanned.Items.Add(trip.TripInfo());
+            form.ShowDialog();
         }
     }
 }

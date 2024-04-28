@@ -53,7 +53,7 @@ namespace KP_Dykun_UIClasses
             {
                 foreach (var comp in trip.Companions)
                 {
-                    if (comp.Login == companion.Login)
+                    if (comp.Login == companion.Login && trip.Date < DateTime.Now)
                         form.listTripHistory.Items.Add(trip.TripInfo());
                 }
             }
@@ -179,6 +179,21 @@ namespace KP_Dykun_UIClasses
             {
                 MessageBox.Show("Спочатку оберіть поїздку!", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnPlannedTrips_Click(object sender, EventArgs e)
+        {
+            PlannedTravelsForm form = new();
+            foreach (var trip in trips!)
+            {
+                foreach (var comp in trip.Companions)
+                {
+                    if (comp.Login == companion!.Login && trip.Date > DateTime.Now)
+                        form.listTripsPlanned.Items.Add(trip.TripInfo());
+                }
+            }
+
+            form.ShowDialog();
         }
     }
 }

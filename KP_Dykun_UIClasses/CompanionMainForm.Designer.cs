@@ -41,6 +41,7 @@
             listFoundTrips = new ListBox();
             lstBoxHeaders = new ListBox();
             btnBookPlace = new Button();
+            btnPlannedTrips = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nmrcUpDownSeats).BeginInit();
             SuspendLayout();
@@ -207,12 +208,28 @@
             btnBookPlace.Visible = false;
             btnBookPlace.Click += btnBookPlace_Click;
             // 
+            // btnPlannedTrips
+            // 
+            btnPlannedTrips.BackColor = SystemColors.ButtonShadow;
+            btnPlannedTrips.Cursor = Cursors.Hand;
+            btnPlannedTrips.FlatStyle = FlatStyle.Popup;
+            btnPlannedTrips.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnPlannedTrips.ForeColor = SystemColors.ButtonHighlight;
+            btnPlannedTrips.Location = new Point(370, 12);
+            btnPlannedTrips.Name = "btnPlannedTrips";
+            btnPlannedTrips.Size = new Size(237, 49);
+            btnPlannedTrips.TabIndex = 11;
+            btnPlannedTrips.Text = "Заплановані поїздки";
+            btnPlannedTrips.UseVisualStyleBackColor = false;
+            btnPlannedTrips.Click += btnPlannedTrips_Click;
+            // 
             // CompanionMainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1042, 576);
+            Controls.Add(btnPlannedTrips);
             Controls.Add(btnBookPlace);
             Controls.Add(lstBoxHeaders);
             Controls.Add(listFoundTrips);
@@ -243,5 +260,6 @@
         private Label lblSeats;
         private ListBox lstBoxHeaders;
         private Button btnBookPlace;
+        private Button btnPlannedTrips;
     }
 }
