@@ -131,6 +131,7 @@ namespace KP_Dykun_UIClasses
 
                 drivers!.Remove(drivers.First(p => p.Login == splitDriverInfo[0]));
                 SaveDriversToFileJson(drivers, "drivers.json");
+                MessageBox.Show("Користувач успішно заблокован", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 listDrivers.Items.Clear();
 
                 foreach (var driver in drivers)
@@ -151,6 +152,7 @@ namespace KP_Dykun_UIClasses
 
                 companions!.Remove(companions.First(p => p.Login == splitCompanionInfo[0]));
                 SaveCompanionsToFileJson(companions, "companions.json");
+                MessageBox.Show("Користувач успішно заблокован", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 listCompanions.Items.Clear();
 
                 foreach (var companion in companions)
@@ -172,6 +174,7 @@ namespace KP_Dykun_UIClasses
 
                 trips!.Remove(trips.First(p => p.Number == int.Parse(splitTripInfo[0])));
                 SaveTripsToFileJson(trips, "trips.json");
+                MessageBox.Show("Поїздку успішно видалено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 listTrips.Items.Clear();
 
                 foreach (var trip in trips)
