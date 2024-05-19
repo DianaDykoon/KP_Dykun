@@ -5,8 +5,8 @@ namespace KP_Dykun_UIClasses
 {
     public partial class AdminForm : Form
     {
-        List<Driver>? drivers = new();
-        List<Companion>? companions = new();
+        readonly List<Driver>? drivers = new();
+        readonly List<Companion>? companions = new();
         List<Trip>? trips = new();
 
         public AdminForm()
@@ -131,6 +131,7 @@ namespace KP_Dykun_UIClasses
 
                 drivers!.Remove(drivers.First(p => p.Login == splitDriverInfo[0]));
                 SaveDriversToFileJson(drivers, "drivers.json");
+
                 MessageBox.Show("Користувач успішно заблокован", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 listDrivers.Items.Clear();
 
@@ -169,12 +170,17 @@ namespace KP_Dykun_UIClasses
         {
             try
             {
+                Administrator administrator = new Administrator();
                 string tripInfo = listTrips.SelectedItem!.ToString()!;
                 string[] splitTripInfo = tripInfo.Split(",");
 
-                trips!.Remove(trips.First(p => p.Number == int.Parse(splitTripInfo[0])));
+               // trips!.Remove(trips.First(p => p.Number == int.Parse(splitTripInfo[0])));
+                var tripToDelete = trips!.FirstOrDefault(p => p.Number == int.Parse(splitTripInfo[0]));
+                
+                administrator.Notify += DisplayMessage;
+                administrator.DeleteTrip(tripToDelete!.Number, tripToDelete.Date, ref trips!);
+
                 SaveTripsToFileJson(trips, "trips.json");
-                MessageBox.Show("Поїздку успішно видалено", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 listTrips.Items.Clear();
 
                 foreach (var trip in trips)
@@ -184,6 +190,11 @@ namespace KP_Dykun_UIClasses
             {
                 MessageBox.Show("Спочатку оберіть поїздку!", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        static void DisplayMessage(Administrator sender, AdministratorEventArgs e)
+        {
+            MessageBox.Show($"Операцiя: {e.Message}\n номер поїздки: {e.TripNumber}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

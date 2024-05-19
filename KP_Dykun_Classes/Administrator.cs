@@ -6,10 +6,27 @@ using System.Threading.Tasks;
 
 namespace KP_Dykun_Classes
 {
+    public class AdministratorEventArgs
+    {
+        public string Message { get; }
+        public int TripNumber { get; }
+
+        public AdministratorEventArgs(string message, int tripNumber)
+        {
+            Message = message;
+            TripNumber = tripNumber;
+        }
+    }
+
+    public delegate void AdministratorHandler(string message);
+
     public class Administrator : User
     {
         private string _login;
         private string _password;
+
+        public delegate void AdministratorHandler(Administrator sender, AdministratorEventArgs e);
+        public event AdministratorHandler? Notify;
 
         public override string Login
         {
@@ -29,6 +46,7 @@ namespace KP_Dykun_Classes
             Password = password;
         }
         public Administrator() { }
+
 
         public override bool Authorization(string login, string password, List<User> users)
         {
@@ -64,6 +82,7 @@ namespace KP_Dykun_Classes
                 return false;
 
             trips.Remove(trip);
+            Notify?.Invoke(this, new AdministratorEventArgs($"Видалення поїздки", tripNumber));
             return true;
         }
     }

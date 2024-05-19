@@ -133,6 +133,7 @@
             Controls.Add(lblTripHistory);
             Controls.Add(listTripHistory);
             Name = "TravelHistoryForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TravelHistory";
             ResumeLayout(false);
             PerformLayout();

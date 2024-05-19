@@ -156,6 +156,7 @@
             Controls.Add(listTrips);
             Controls.Add(listDrivers);
             Name = "AdminForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Administrator";
             ResumeLayout(false);
             PerformLayout();

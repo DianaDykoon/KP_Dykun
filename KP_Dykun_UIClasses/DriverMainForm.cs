@@ -44,7 +44,10 @@ namespace KP_Dykun_UIClasses
         private void btnViewTripHistory_Click(object sender, EventArgs e)
         {
             TravelHistoryForm form = new TravelHistoryForm();
-            var driverTrips = trips!.Where(t => t.Driver.Login == driver!.Login && t.Date < DateTime.Now).ToList();
+
+            var driverTrips = trips!.Where(t =>
+                t.Driver.Login == driver!.Login && t.Date < DateTime.Now).ToList();
+
             foreach (var trip in driverTrips)
                 form.listTripHistory.Items.Add(trip.TripInfo());
             form.ShowDialog();

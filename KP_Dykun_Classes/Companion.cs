@@ -10,6 +10,9 @@ namespace KP_Dykun_Classes
 {
     public class Companion : User
     {
+        public delegate void CompanionHandler(string message);
+        public event CompanionHandler? Notify;
+
         private string _login;
         private string _password;
         private string _phoneNumber;
@@ -28,6 +31,12 @@ namespace KP_Dykun_Classes
             set => _password = value;
         }
 
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
         [JsonPropertyName("Phone number")]
         public string PhoneNumber
         {
@@ -35,11 +44,7 @@ namespace KP_Dykun_Classes
             set => _phoneNumber = value;
         }
 
-        public string Name
-        {
-            get => _name;
-            set => _name = value;
-        }
+        
 
         public string PhotoPath
         {
@@ -97,11 +102,18 @@ namespace KP_Dykun_Classes
         {
             var trip = trips.Where(t => t.Number == tripNumber).FirstOrDefault();
             if (trip is null)
+            {
+                Notify?.Invoke($"Поїздки з номером {tripNumber} не існує.");
                 return false;
+            }
 
             if (numberOfSeatsRequired > trip.NumberOfSeats)
+            {
+                Notify?.Invoke($"Недостатня кількість місць.");
                 return false;
-
+            }
+            
+            Notify?.Invoke($"Успішно заброньовано місце.");
             return true;
         }
 

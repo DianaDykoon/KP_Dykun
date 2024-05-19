@@ -205,6 +205,7 @@
             Controls.Add(lblMotivation);
             Controls.Add(panel1);
             Name = "DriverMainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Driver";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

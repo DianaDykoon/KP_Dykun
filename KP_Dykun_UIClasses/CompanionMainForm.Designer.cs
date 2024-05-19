@@ -238,6 +238,7 @@
             Controls.Add(btnViewTripHistory);
             Controls.Add(panel1);
             Name = "CompanionMainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Companion";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

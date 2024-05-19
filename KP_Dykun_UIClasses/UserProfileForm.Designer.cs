@@ -184,6 +184,7 @@
             Controls.Add(panel1);
             Controls.Add(btnReturnToMainForm);
             Name = "UserProfileForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

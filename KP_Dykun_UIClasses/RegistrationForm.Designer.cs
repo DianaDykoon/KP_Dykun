@@ -179,6 +179,7 @@
             Controls.Add(lblPassword);
             Controls.Add(lblLogin);
             Name = "RegistrationForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Registration";
             ResumeLayout(false);
             PerformLayout();

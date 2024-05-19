@@ -125,6 +125,7 @@
             Controls.Add(lblLogin);
             ForeColor = SystemColors.ButtonHighlight;
             Name = "AuthorizationForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Authorization";
             ResumeLayout(false);
             PerformLayout();

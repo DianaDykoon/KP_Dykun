@@ -63,13 +63,14 @@ namespace KP_Dykun_Classes
 
         public Trip(DateTime date, string pointOfDeparture, string destination, short numberOfSeats, Driver driver)
         {
+            Number = currentNumber++;
+
             Date = date;
             PointOfDeparture = pointOfDeparture;
             Destination = destination;
             NumberOfSeats = numberOfSeats;
             Driver = driver;
             companions = new List<Companion>();
-            Number = currentNumber++;
         }
 
         public void AddCompanion (Companion companion)

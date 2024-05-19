@@ -132,6 +132,7 @@
             Controls.Add(lblTripPlanned);
             Controls.Add(listTripsPlanned);
             Name = "PlannedTravelsForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PlannedTravelsForm";
             ResumeLayout(false);
             PerformLayout();
