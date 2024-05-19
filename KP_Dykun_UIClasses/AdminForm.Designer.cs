@@ -47,6 +47,7 @@
             listDrivers.Name = "listDrivers";
             listDrivers.Size = new Size(229, 264);
             listDrivers.TabIndex = 0;
+            listDrivers.SelectedIndexChanged += listDrivers_SelectedIndexChanged;
             // 
             // listTrips
             // 
@@ -56,6 +57,7 @@
             listTrips.Name = "listTrips";
             listTrips.Size = new Size(366, 264);
             listTrips.TabIndex = 1;
+            listTrips.SelectedIndexChanged += listTrips_SelectedIndexChanged;
             // 
             // lblDrivers
             // 
@@ -140,6 +142,7 @@
             listCompanions.Name = "listCompanions";
             listCompanions.Size = new Size(229, 264);
             listCompanions.TabIndex = 6;
+            listCompanions.SelectedIndexChanged += listCompanions_SelectedIndexChanged;
             // 
             // AdminForm
             // 

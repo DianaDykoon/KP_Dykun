@@ -163,7 +163,7 @@ namespace KP_Dykun_UIClasses
             {
                 MessageBox.Show("Спочатку оберіть користувача!", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
         }
 
         private void btnDeleteTrip_Click(object sender, EventArgs e)
@@ -174,9 +174,9 @@ namespace KP_Dykun_UIClasses
                 string tripInfo = listTrips.SelectedItem!.ToString()!;
                 string[] splitTripInfo = tripInfo.Split(",");
 
-               // trips!.Remove(trips.First(p => p.Number == int.Parse(splitTripInfo[0])));
+                // trips!.Remove(trips.First(p => p.Number == int.Parse(splitTripInfo[0])));
                 var tripToDelete = trips!.FirstOrDefault(p => p.Number == int.Parse(splitTripInfo[0]));
-                
+
                 administrator.Notify += DisplayMessage;
                 administrator.DeleteTrip(tripToDelete!.Number, tripToDelete.Date, ref trips!);
 
@@ -195,6 +195,21 @@ namespace KP_Dykun_UIClasses
         static void DisplayMessage(Administrator sender, AdministratorEventArgs e)
         {
             MessageBox.Show($"Операцiя: {e.Message}\n номер поїздки: {e.TripNumber}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void listDrivers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDeleteDriver.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+        }
+
+        private void listCompanions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDeleteCompanion.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+        }
+
+        private void listTrips_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDeleteTrip.Font = new Font("Segoe UI", 11, FontStyle.Bold);
         }
     }
 }
