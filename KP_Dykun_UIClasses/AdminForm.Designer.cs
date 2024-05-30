@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             listDrivers = new ListBox();
             listTrips = new ListBox();
             lblDrivers = new Label();
@@ -37,6 +38,8 @@
             btnDeleteCompanion = new Button();
             lblCompanions = new Label();
             listCompanions = new ListBox();
+            buttonExcelExport = new Button();
+            buttonWordExport = new Button();
             SuspendLayout();
             // 
             // listDrivers
@@ -86,9 +89,9 @@
             btnDeleteDriver.FlatStyle = FlatStyle.Popup;
             btnDeleteDriver.Font = new Font("Segoe UI", 10.8F);
             btnDeleteDriver.ForeColor = SystemColors.ButtonFace;
-            btnDeleteDriver.Location = new Point(61, 364);
+            btnDeleteDriver.Location = new Point(44, 364);
             btnDeleteDriver.Name = "btnDeleteDriver";
-            btnDeleteDriver.Size = new Size(125, 54);
+            btnDeleteDriver.Size = new Size(153, 54);
             btnDeleteDriver.TabIndex = 4;
             btnDeleteDriver.Text = "Заблокувати";
             btnDeleteDriver.UseVisualStyleBackColor = false;
@@ -101,9 +104,9 @@
             btnDeleteTrip.FlatStyle = FlatStyle.Popup;
             btnDeleteTrip.Font = new Font("Segoe UI", 10.8F);
             btnDeleteTrip.ForeColor = SystemColors.ButtonFace;
-            btnDeleteTrip.Location = new Point(739, 364);
+            btnDeleteTrip.Location = new Point(715, 364);
             btnDeleteTrip.Name = "btnDeleteTrip";
-            btnDeleteTrip.Size = new Size(125, 54);
+            btnDeleteTrip.Size = new Size(153, 54);
             btnDeleteTrip.TabIndex = 5;
             btnDeleteTrip.Text = "Видалити";
             btnDeleteTrip.UseVisualStyleBackColor = false;
@@ -116,9 +119,9 @@
             btnDeleteCompanion.FlatStyle = FlatStyle.Popup;
             btnDeleteCompanion.Font = new Font("Segoe UI", 10.8F);
             btnDeleteCompanion.ForeColor = SystemColors.ButtonFace;
-            btnDeleteCompanion.Location = new Point(369, 364);
+            btnDeleteCompanion.Location = new Point(360, 364);
             btnDeleteCompanion.Name = "btnDeleteCompanion";
-            btnDeleteCompanion.Size = new Size(125, 54);
+            btnDeleteCompanion.Size = new Size(153, 54);
             btnDeleteCompanion.TabIndex = 8;
             btnDeleteCompanion.Text = "Заблокувати";
             btnDeleteCompanion.UseVisualStyleBackColor = false;
@@ -144,11 +147,34 @@
             listCompanions.TabIndex = 6;
             listCompanions.SelectedIndexChanged += listCompanions_SelectedIndexChanged;
             // 
+            // buttonExcelExport
+            // 
+            buttonExcelExport.Image = (Image)resources.GetObject("buttonExcelExport.Image");
+            buttonExcelExport.ImageAlign = ContentAlignment.TopLeft;
+            buttonExcelExport.Location = new Point(1026, 94);
+            buttonExcelExport.Name = "buttonExcelExport";
+            buttonExcelExport.Size = new Size(130, 107);
+            buttonExcelExport.TabIndex = 9;
+            buttonExcelExport.UseVisualStyleBackColor = true;
+            buttonExcelExport.Click += buttonExcelExport_Click;
+            // 
+            // buttonWordExport
+            // 
+            buttonWordExport.Image = (Image)resources.GetObject("buttonWordExport.Image");
+            buttonWordExport.Location = new Point(1026, 251);
+            buttonWordExport.Name = "buttonWordExport";
+            buttonWordExport.Size = new Size(130, 107);
+            buttonWordExport.TabIndex = 10;
+            buttonWordExport.UseVisualStyleBackColor = true;
+            buttonWordExport.Click += buttonWordExport_Click;
+            // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1024, 471);
+            ClientSize = new Size(1200, 471);
+            Controls.Add(buttonWordExport);
+            Controls.Add(buttonExcelExport);
             Controls.Add(btnDeleteCompanion);
             Controls.Add(lblCompanions);
             Controls.Add(listCompanions);
@@ -175,5 +201,7 @@
         private Button btnDeleteCompanion;
         private Label lblCompanions;
         private ListBox listCompanions;
+        private Button buttonExcelExport;
+        private Button buttonWordExport;
     }
 }

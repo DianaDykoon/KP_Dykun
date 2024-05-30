@@ -1,4 +1,6 @@
 using KP_Dykun_Classes;
+using Microsoft.VisualBasic.ApplicationServices;
+using OfficeLab;
 using System.Text.Json;
 
 namespace KP_Dykun_UIClasses
@@ -210,6 +212,85 @@ namespace KP_Dykun_UIClasses
         private void listTrips_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnDeleteTrip.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+        }
+
+        private void buttonExcelExport_Click(object sender, EventArgs e)
+        {
+
+            string fileName = "CompanionsTrips";
+            string fullName = $"{Directory.GetCurrentDirectory()}\\{fileName}.xlsx";
+            using (ExcelDoc excelDoc = new ExcelDoc())
+            {
+                for (int i = 0; i < companions!.Count; i++)
+                    excelDoc[i + 1, 1] = companions[i].CompanionInfo();
+
+                excelDoc.createSheet();
+                excelDoc.SaveAs(fullName);
+            }
+            MessageBox.Show($"Список попутників збережено у\n {fullName}", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Thread.Sleep(2000);
+
+           // string fileNameTrips = "Trips";
+           // string fullNameTrips = $"{Directory.GetCurrentDirectory()}\\{fileNameTrips}.xlsx";
+            using (ExcelDoc excelDoc = new ExcelDoc(fullName))
+            {
+                for (int i = 0; i < trips!.Count; i++)
+                    excelDoc[i + 1, 1] = trips[i].TripInfo();
+
+                excelDoc.SaveAs(fullName);
+            }
+            MessageBox.Show($"Список поїздок збережено у\n {fullName}", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Thread.Sleep(2000);
+        }
+
+        private void buttonWordExport_Click(object sender, EventArgs e)
+        {
+            string fileNameDoc = "DriversTrips";
+            string fullNameDoc = $"{Directory.GetCurrentDirectory()}\\{fileNameDoc}.docx";
+            using (WordDoc wordDoc = new WordDoc())
+            {
+
+                for (int i = 0; i < drivers!.Count; i++)
+                    wordDoc[i + 1] = drivers[i].DriverInfo();
+
+                wordDoc.CreateTable(drivers.Count, 3, "Таблиця 1 – Список водіїв");
+
+                for (int i = 0; i < drivers.Count; i++)
+                {
+                    string driverInfo = drivers[i].DriverInfo();
+                    string[] splitDriverInfo = driverInfo.Split(",");
+
+                    for (int j = 0; j < splitDriverInfo.Length; j++)
+                    {
+                        wordDoc[i + 1, j + 1] = splitDriverInfo[j];
+                    }
+                }
+                wordDoc.SaveAs(fullNameDoc);
+            }
+            MessageBox.Show($"Список водіїв збережено у\n {fullNameDoc}", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Thread.Sleep(2000);
+
+            //string fileNameDocTrips = "Trips";
+            //string fullNameDocTrips = $"{Directory.GetCurrentDirectory()}\\{fileNameDocTrips}.docx";
+            using (WordDoc wordDoc = new WordDoc(fullNameDoc))
+            {
+                wordDoc.CreateTable(trips.Count, 6, "Таблиця 2 – Список поїздок");
+
+                for (int i = 0; i < trips.Count; i++)
+                {
+                    string tripInfo = trips[i].TripInfo();
+                    string[] splitTripInfo = tripInfo.Split(",");
+
+                    for (int j = 0; j < splitTripInfo.Length; j++)
+                    {
+                        wordDoc[i + 1, j + 1] = splitTripInfo[j];
+                    }
+                }
+
+                wordDoc.SaveAs(fullNameDoc);
+            }
+            MessageBox.Show($"Список поїздок збережено у\n {fullNameDoc}", "Увага!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Thread.Sleep(2000);
         }
     }
 }
